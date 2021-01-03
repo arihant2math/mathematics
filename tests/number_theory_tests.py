@@ -1,4 +1,4 @@
-import mathematics.number_theory
+import number_theory
 
 
 class TestClass:

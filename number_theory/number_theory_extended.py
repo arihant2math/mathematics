@@ -1,5 +1,5 @@
 import statistics
-import __init__
+import number_theory.number_theory_essensials
 import math
 
 

@@ -2,6 +2,8 @@ import math
 
 
 class Number(int):
+    """The int class with extra features"""
+
     def __init__(self, num):
         super().__init__()
         self.num = num
@@ -12,6 +14,13 @@ class Number(int):
         else:
             return False
 
+    def sum_digits(self):
+        str_num = str(self.num)
+        ans = Number(0)
+        for item in str_num:
+            ans += int(item)
+        return ans
+
 
 class Prime(Number):
     def __init__(self, num):
@@ -21,18 +30,37 @@ class Prime(Number):
         self.num = num
 
 
-class Merrsene(Prime):
+class MerrsenePrime(Prime):
     def __init__(self, num):
         super().__init__(num)
+        is_merrsenne = False
+        for i in range(0, num + 1):
+            if num == ((i ** 2) - 1):
+                is_merrsenne = True
+        if not is_merrsenne:
+            raise Exception("The number is not Merrsenne")
 
 
-class SofieGermain(Prime):
+class SofieGermainPrime(Prime):
     def __init__(self, num):
         super().__init__(num)
 
 
 class Fraction:
-    def __init__(self, numerator, denominator):
+    def __init__(self, s, numerator, denominator):
+
+        if (numerator is None) or (denominator is None):
+            numerator = ""
+            denominator = ""
+            is_numerator = True
+            for item in s:
+                if item != " ":
+                    if item == "/":
+                        is_numerator = False
+                    elif is_numerator:
+                        numerator += item
+                    else:
+                        denominator += item
         self.num = int(numerator)
         if denominator == 0:
             raise ZeroDivisionError
@@ -69,7 +97,7 @@ class Fraction:
         pass
 
     def __abs__(self):
-        return Fraction(abs(self.num), self.denom)
+        return Fraction(abs(self.num), self.denom)  # denominator will always be positive
 
 
 class Imaginary:
@@ -148,14 +176,14 @@ class Imaginary:
 
     def __pow__(self, power, modulo=None):
         if not (modulo is None):
-            return NotImplemented
+            return NotImplementedError
         ans = self
         for i in range(0, power):
             ans = ans * self
         return Imaginary(ans)
 
     def __mod__(self, other):
-        return NotImplemented
+        return NotImplementedError
 
     def format(self):
         real = self.real_part
@@ -166,7 +194,7 @@ class Imaginary:
 
 
 class Variable:
-    def __init__(self, s=None, name=None, coefficient=None, power=None):
+    def __init__(self, s="", name=None, coefficient=None, power=None):
         """
         :type s: str
         :type name: str
@@ -254,6 +282,29 @@ class Variable:
         return Variable(name=self.name, coefficient=abs(self.coefficient))
 
 
+class Term:
+    def __init__(self, s):
+        breaker = []
+        has_variable = False
+        for item in s:
+            if not has_variable:
+                if item == "*" or "/":
+                    raise Exception("Not a term")
+                elif item.isalpha:
+                    has_variable = True
+                elif item != " ":
+                    breaker.append(item)
+        if has_variable:
+            self.operate = Variable(s=s)
+        else:
+            self.operate = Number(s)
+        self.has_variable = has_variable
+
+    def simplify(self):
+        if self.has_variable:
+            self.operate.simplify
+
+
 class Expression:
     def __init__(self, expression):
         breaker = []
@@ -262,10 +313,18 @@ class Expression:
         for item in expression:
             if item != ' ':
                 breaker.append(item)
+        positive = True
         for item in breaker:
             if item == "+":
-                terms.append(term)
-                term = ""
+                positive = True
+                if positive:
+                    terms.append(term)
+                    term = ""
+            elif item == "-":
+                positive = False
+                if positive:
+                    terms.append(term)
+                    term = ""
             else:
                 term += item
         breaker = []
@@ -286,14 +345,11 @@ class Expression:
 
 
 class Equation:
-    def __init__(self, expression1, expression2):
-        self.expression1 = expression1
-        self.expression2 = expression2
+    def __init__(self, expression_one, expression_two):
+        self.expression_one = Expression(expression_one)
+        self.expression_two = Expression(expression_two)
+        self.expression_one.simplify()
+        self.expression_two.simplify()
 
-
-print(Fraction(3, 7))
-print(Fraction(4, 10))
-print(Fraction(0, 10))
-print(Fraction(-4, 10))
-print(Fraction(4, -10))
-print(Fraction(4, 0))
+    def solve(self):
+        raise NotImplementedError
