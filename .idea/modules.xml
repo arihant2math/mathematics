@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/.idea/mathematics.iml" filepath="$PROJECT_DIR$/.idea/mathematics.iml" />
+      <module fileurl="file://$USER_HOME$/ashwin/number_theory/.idea/number_theory.iml" filepath="$USER_HOME$/ashwin/number_theory/.idea/number_theory.iml" />
+    </modules>
+  </component>
+</project>
