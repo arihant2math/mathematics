@@ -12,8 +12,8 @@ class Probability:
         return 1 - v
 
 
-def are_mututally_exclusive(A, B):
-    a_intersection_b = (set(A.desired_outcomes)).intersection(set(B.desired_outcomes))
+def are_mutually_exclusive(a, b):
+    a_intersection_b = (set(a.desired_outcomes)).intersection(set(b.desired_outcomes))
     if a_intersection_b == 0:
         return True
     else:
@@ -33,8 +33,8 @@ def a_and_b_single_try_independent(a, b, universal_set):
     return prob_a_intersection_b
 
 
-def a_and_b_two_tries_independent(A, B):
-    return A.value() * B.value()
+def a_and_b_two_tries_independent(a, b):
+    return a.value() * b.value()
 
 
 def a_given_b(a, b, universal_set):
@@ -44,8 +44,8 @@ def a_given_b(a, b, universal_set):
     return prob_a_given_b
 
 
-def Bayes_A_given_B(A, B, universal_set):
-    prob_b_given_a = a_given_b(B, A, universal_set)
-    numerator = prob_b_given_a * A.value()
-    val = numerator / B.value()
+def bayes_a_given_b(a, b, universal_set):
+    prob_b_given_a = a_given_b(b, a, universal_set)
+    numerator = prob_b_given_a * a.value()
+    val = numerator / b.value()
     return val

@@ -1,7 +1,6 @@
-import function
+from counting_and_probability import function
 import itertools
 from math import *
-from function import *
 
 
 def totient_fuction(m, print_units):
@@ -86,7 +85,7 @@ def generate_cyclic_permutations(string):
     perm_var = generate_permutations(string, len(string))
     cyclic_permutations = []
     for item in perm_var:
-        if cyclic_permutations != []:
+        if cyclic_permutations:
             is_equal = False
             for cyclic_permutation in cyclic_permutations:
                 for i in range(len(cyclic_permutation)):
@@ -112,13 +111,13 @@ def multiset_p(multiset_of_strings):
     return num / den
 
 
-def sigma(oper, start, stop, if_statement):
-    ans = 0
-    for item in if_statement:
-        if item == " ":
-            pass
-
-    for i in range(start, stop + 1):
-        func = function(oper)
-        ans = ans+func.solve(i, oper)
-    return ans
+# def sigma(oper, start, stop, if_statement):
+#     ans = 0
+#     for item in if_statement:
+#         if item == " ":
+#             pass
+#
+#     for i in range(start, stop + 1):
+#         func = function(oper)
+#         ans = ans + func.solve(i, oper)
+#     return ans

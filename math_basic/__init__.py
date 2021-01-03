@@ -17,7 +17,7 @@ class Prime(Number):
     def __init__(self, num):
         super().__init__(num)
         if math.factorial(num - 1) % num != -1:
-            raise Exception("Number is not prime. ")
+            raise Exception("The number is not prime")
         self.num = num
 
 
@@ -167,7 +167,13 @@ class Imaginary:
 
 class Variable:
     def __init__(self, s=None, name=None, coefficient=None, power=None):
-        if (s is not None) and ((name is None) or (coefficient is None)):
+        """
+        :type s: str
+        :type name: str
+        :type coefficient: int
+        :type power: int
+        """
+        if (name is None) or (coefficient is None):
             odd = [" ", "@", "*", "&"]
             breaker = []
             for item in s:
