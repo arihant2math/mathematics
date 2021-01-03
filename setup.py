@@ -4,7 +4,7 @@ with open("README.md", "r", encoding="utf-8") as fh:
     long_description = fh.read()
 
 setuptools.setup(
-    name="mathematics",
+    name="mathematics-package",
     version="0.0.0a1",
     author="Ashwin Naren",
     author_email="arihant2math@gmail.com",
