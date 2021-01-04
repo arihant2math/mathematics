@@ -15,6 +15,7 @@ class Number(int):
             return False
 
     def sum_digits(self):
+        """Returns the sum of all the digits"""
         str_num = str(self.num)
         ans = Number(0)
         for item in str_num:
@@ -22,33 +23,9 @@ class Number(int):
         return ans
 
 
-class Prime(Number):
-    def __init__(self, num):
-        super().__init__(num)
-        if math.factorial(num - 1) % num != -1:
-            raise Exception("The number is not prime")
-        self.num = num
-
-
-class MerrsenePrime(Prime):
-    def __init__(self, num):
-        super().__init__(num)
-        is_merrsenne = False
-        for i in range(0, num + 1):
-            if num == ((i ** 2) - 1):
-                is_merrsenne = True
-        if not is_merrsenne:
-            raise Exception("The number is not Merrsenne")
-
-
-class SofieGermainPrime(Prime):
-    def __init__(self, num):
-        super().__init__(num)
-
-
 class Fraction:
+    """A fraction class that emulates a fraction"""
     def __init__(self, s, numerator, denominator):
-
         if (numerator is None) or (denominator is None):
             numerator = ""
             denominator = ""
@@ -109,7 +86,7 @@ class Imaginary:
                 breaker.append(item)
         num = ""
         for item in breaker:
-            num = num + item
+            num += item
 
         self.math_form = num
         imaginary_part = ""
