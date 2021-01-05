@@ -22,10 +22,19 @@ class Number(int):
             ans += int(item)
         return ans
 
+    def product_digits(self):
+        """Returns the sum of all the digits"""
+        str_num = str(self.num)
+        ans = Number(0)
+        for item in str_num:
+            ans *= int(item)
+        return ans
+
 
 class Fraction:
     """A fraction class that emulates a fraction"""
-    def __init__(self, s, numerator, denominator):
+
+    def __init__(self, s="", numerator=None, denominator=None):
         if (numerator is None) or (denominator is None):
             numerator = ""
             denominator = ""
@@ -42,24 +51,30 @@ class Fraction:
         if denominator == 0:
             raise ZeroDivisionError
         if denominator > 0:
-            self.denom = int(denominator)
+            self.denominator = int(denominator)
         else:
-            self.denom = abs(denominator)
+            self.denominator = abs(denominator)
             self.num = -self.num
 
     def __str__(self):
-        div_by = math.gcd(self.num, self.denom)
-        return str(self.num // div_by) + "/" + str(self.denom // div_by)
+        div_by = math.gcd(self.num, self.denominator)
+        return str(self.num // div_by) + "/" + str(self.denominator // div_by)
 
     def __add__(self, other):
-        # return Fraction((self.numerator + other.numerator), (self.denominator + other.denominator))
-        pass
+        the_lcm = math.lcm(self.denominator, other.denominator)
+        self_denominator_lcm = the_lcm // self.denominator
+        other_denominator_lcm = the_lcm // other.denominator
+        return Fraction(((self.num*self_denominator_lcm) + (other.num*other_denominator_lcm)), (the_lcm + the_lcm))
 
     def __sub__(self, other):
-        pass
+        the_lcm = math.lcm(self.denominator, other.denominator)
+        self_denominator_lcm = the_lcm // self.denominator
+        other_denominator_lcm = the_lcm // other.denominator
+        return Fraction(((self.num * self_denominator_lcm) - (other.num * other_denominator_lcm)), (the_lcm + the_lcm))
 
     def __mul__(self, other):
-        pass
+        return Fraction(numerator=(self.num * other.num), denominator=(self.denominator * other.denominator))
+        # denominator will always be positive
 
     def __truediv__(self, other):
         pass
@@ -74,10 +89,14 @@ class Fraction:
         pass
 
     def __abs__(self):
-        return Fraction(abs(self.num), self.denom)  # denominator will always be positive
+        return Fraction(numerator=abs(self.num), denominator=self.denominator)  # denominator will always be positive
 
 
 class Imaginary:
+    """
+    emulates an imaginary number.
+    """
+
     def __init__(self, num):
         num = str(num).lower()
         breaker = []
