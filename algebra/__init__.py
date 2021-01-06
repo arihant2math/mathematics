@@ -74,10 +74,9 @@ class Fraction:
 
     def __mul__(self, other):
         return Fraction(numerator=(self.num * other.num), denominator=(self.denominator * other.denominator))
-        # denominator will always be positive
 
     def __truediv__(self, other):
-        pass
+        return Fraction(numerator=(self.num * other.denominator), denominator=(self.denominator * other.num))
 
     def __floordiv__(self, other):
         pass
@@ -118,10 +117,10 @@ class Imaginary:
             else:
                 if right_side_now:
                     if item != "i":
-                        imaginary_part = imaginary_part + item
+                        imaginary_part += item
                 else:
                     if item != "i":
-                        real_part = real_part + item
+                        real_part += item
                     if item == "i":
                         which_is_imaginary = False
         if which_is_imaginary:
@@ -181,15 +180,24 @@ class Imaginary:
     def __mod__(self, other):
         return NotImplementedError
 
-    def format(self):
+    def format(self, latex=False):
+        """
+        formats an imagery number into mathematical format.
+        :return: str
+        """
         real = self.real_part
         imaginary = self.imaginary_part
-        # not finished
-        ans = str(real) + "+" + str(imaginary) + "i"
+        if not latex:
+            ans = str(real) + "+" + str(imaginary) + "i"
+        else:
+            ans = "$"+str(real) + "+" + str(imaginary) + "i" + "$"
         return ans
 
 
 class Variable:
+    """
+    Emulates a Variable
+    """
     def __init__(self, s="", name=None, coefficient=None, power=None):
         """
         :type s: str
@@ -203,10 +211,7 @@ class Variable:
             for item in s:
                 if item != " ":
                     breaker.append(item)
-            s = ""
-            after_name = False
             right_after_name = False
-            second = 1
             for item in breaker:
                 if right_after_name:
                     if item == "*":
@@ -223,7 +228,7 @@ class Variable:
                 breaker.remove(breaker[len(breaker) - 1])
             coefficient = ""
             for item in breaker:
-                coefficient = coefficient + item
+                coefficient += item
         self.name = str(name)
         if coefficient is None:
             self.coefficient = 1
