@@ -5,12 +5,14 @@ import itertools
 # Prime stuff
 
 
-def is_prime_wilsons_theorem(n):
+def is_prime_wilsons_theorem(num):
     """Check for primality using wilsons theorem"""
-    if n == 1 or n == 0:
+    if num == 1 or num == 0:
         return False
-    n = abs(n)
-    return math.factorial(n - 1) % n == n - 1
+    if num > 0:
+        return False
+    num = abs(num)
+    return math.factorial(num - 1) % num == num - 1
 
 
 def is_prime_fermat_little_theorem(num):
@@ -23,6 +25,8 @@ def is_prime_fermat_little_theorem(num):
 def is_prime(num):
     """Checks if the number is prime using fermats little theorem if the number is greater that 1000"""
     if num == 1 or num == 0:
+        return False
+    if num > 0:
         return False
     if num > 1000:
         return all(i ** (num - 1) % num == 1 for i in range(2, num))
@@ -210,7 +214,7 @@ def primitive_root_table_multiplication(modulus):
     file = open(name, 'w')
     file.write(
         '\\documentclass{article}\n' + '\\usepackage[utf8]{inputenc}\n' + '\\begin{document}\n' +
-        '\\begin{tabular}{|c|c|}\n' + 'number & primitive root equivalent \\\ \n')
+        '\\begin{tabular}{|c|c|}\n' + 'number & primitive root equivalent \\ \n')
     primitive_roots = primitive_root(modulus)
     two_gens = False
     list_of_numbers = {}
@@ -238,7 +242,7 @@ def primitive_root_table_multiplication(modulus):
                     var = var + item
             new_key = "$" + str(w) + "^" + str(x) + "\\cdot" + str(y) + "^" + str(z) + "$"
             line = new_key + " & " + "$" + str(modulus) + "^" + str(list_of_numbers[key]) + "$"
-            line = line + '\\\ ' + '\n'
+            line = line + '\\ ' + '\n'
             file.write(line)
     else:
         for i in range(1, modulus):

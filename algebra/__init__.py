@@ -1,3 +1,4 @@
+"""This implements algebraic classes"""
 import math
 
 
@@ -36,6 +37,7 @@ class Fraction:
 
     def __init__(self, s="", numerator=None, denominator=None):
         if (numerator is None) or (denominator is None):
+            s = str(s)
             numerator = ""
             denominator = ""
             is_numerator = True
@@ -50,7 +52,7 @@ class Fraction:
         self.num = int(numerator)
         if denominator == 0:
             raise ZeroDivisionError
-        if denominator > 0:
+        if int(denominator) > 0:
             self.denominator = int(denominator)
         else:
             self.denominator = abs(denominator)
@@ -60,11 +62,18 @@ class Fraction:
         div_by = math.gcd(self.num, self.denominator)
         return str(self.num // div_by) + "/" + str(self.denominator // div_by)
 
+    def __eq__(self, other):
+        if (self.num == other.num) and (self.denominator == other.denominator):
+            return True
+        else:
+            return False
+
     def __add__(self, other):
         the_lcm = math.lcm(self.denominator, other.denominator)
         self_denominator_lcm = the_lcm // self.denominator
         other_denominator_lcm = the_lcm // other.denominator
-        return Fraction(((self.num*self_denominator_lcm) + (other.num*other_denominator_lcm)), (the_lcm + the_lcm))
+        return Fraction(numerator=((self.num * self_denominator_lcm) + (other.num * other_denominator_lcm)),
+                        denominator=(the_lcm + the_lcm))
 
     def __sub__(self, other):
         the_lcm = math.lcm(self.denominator, other.denominator)
@@ -190,7 +199,7 @@ class Imaginary:
         if not latex:
             ans = str(real) + "+" + str(imaginary) + "i"
         else:
-            ans = "$"+str(real) + "+" + str(imaginary) + "i" + "$"
+            ans = "$" + str(real) + "+" + str(imaginary) + "i" + "$"
         return ans
 
 
@@ -198,6 +207,7 @@ class Variable:
     """
     Emulates a Variable
     """
+
     def __init__(self, s="", name=None, coefficient=None, power=None):
         """
         :type s: str
@@ -276,6 +286,9 @@ class Variable:
         elif other.name != self.name:
             return "error " + other.name + " != " + self.name
 
+    def __neg__(self):
+        self.coefficient.__neg__()
+
     def __pow__(self, power, modulo=None):
         pass
 
@@ -301,6 +314,9 @@ class Term:
             self.operate = Number(s)
         self.has_variable = has_variable
 
+    def __neg__(self):
+        self.operate.__neg__()
+
     def simplify(self):
         if self.has_variable:
             self.operate.simplify
@@ -319,12 +335,18 @@ class Expression:
             if item == "+":
                 positive = True
                 if positive:
-                    terms.append(term)
+                    terms.append(Term(term))
+                    term = ""
+                else:
+                    terms.append(-Term(term))
                     term = ""
             elif item == "-":
                 positive = False
                 if positive:
-                    terms.append(term)
+                    terms.append(Term(term))
+                    term = ""
+                else:
+                    terms.append(-Term(term))
                     term = ""
             else:
                 term += item
@@ -342,7 +364,7 @@ class Expression:
 
     def simplify(self):
         for item in self.terms:
-            pass
+            item.simplify()
 
 
 class Equation:

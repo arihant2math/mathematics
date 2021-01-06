@@ -1,8 +1,9 @@
 import pytest
-import ./number_theory
+import number_theory
+from unittest import TestCase
 
 
-class IsPrimeTestClass:
+class IsPrimeTestClass(TestCase):
     def test_is_prime_edge(self):
         x = number_theory.is_prime(1)
         assert x == False
@@ -15,9 +16,14 @@ class IsPrimeTestClass:
         x = number_theory.is_prime(-1254)
         assert x == False
 
-    def test_is_prime(self):
-        x = number_theory.is_prime(37871)
-        assert x == True
+    def test_is_prime_false(self):
+        x = number_theory.is_prime(211)
+        assert x == False
+
+    def test_is_prime_true(self):
+        x = number_theory.is_prime(751)
+        assert x == False
+
 
 class IsPrimeWilsonsTheoremTestClass:
     def test_is_prime_edge(self):
@@ -32,12 +38,16 @@ class IsPrimeWilsonsTheoremTestClass:
         x = number_theory.is_prime_wilsons_theorem(-1254)
         assert x == False
 
-    def test_is_prime(self):
-        x = number_theory.is_prime_wilsons_theorem(37871)
-        assert x == True
+    def test_is_prime_false(self):
+        x = number_theory.is_prime_wilsons_theorem(211)
+        assert x == False
+
+    def test_is_prime_true(self):
+        x = number_theory.is_prime_wilsons_theorem(751)
+        assert x == False
 
 
-class IsPrimeFermatsLittleTheoremTheoremTestClass:
+class IsPrimeFermatsLittleTheoremTestClass:
     def test_is_prime_edge(self):
         x = number_theory.is_prime_fermat_little_theorem(1)
         assert x == False
@@ -50,6 +60,10 @@ class IsPrimeFermatsLittleTheoremTheoremTestClass:
         x = number_theory.is_prime_fermat_little_theorem(-1254)
         assert x == False
 
-    def test_is_prime(self):
-        x = number_theory.is_prime_fermat_little_theorem(37871)
-        assert x == True
+    def test_is_prime_false(self):
+        x = number_theory.is_prime_fermat_little_theorem(211)
+        assert x == False
+
+    def test_is_prime_true(self):
+        x = number_theory.is_prime_fermat_little_theorem(751)
+        assert x == False
