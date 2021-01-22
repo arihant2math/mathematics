@@ -15,12 +15,20 @@ class Number(int):
         else:
             return False
 
+    def __pow__(self, power, modulo=None):
+        if (type(power) == int) or (type(power) == Number):
+            return Number(self.num ** power)
+        elif type(power) == Fraction:
+            return (self.num ** power.num) ** (1.0/float(power.denominator))
+        else:
+            raise TypeError
+
     def sum_digits(self):
         """Returns the sum of all the digits"""
         str_num = str(self.num)
         ans = Number(0)
         for item in str_num:
-            ans += int(item)
+            ans += Number(item)
         return ans
 
     def product_digits(self):
@@ -53,10 +61,10 @@ class Fraction:
         if denominator == 0:
             raise ZeroDivisionError
         if int(denominator) > 0:
-            self.denominator = int(denominator)
+            self.denominator = Number(denominator)
         else:
             self.denominator = abs(denominator)
-            self.num = -self.num
+            self.num = -Number(self.num)
 
     def __str__(self):
         div_by = math.gcd(self.num, self.denominator)
@@ -67,6 +75,9 @@ class Fraction:
             return True
         else:
             return False
+
+    def __floor__(self):
+        return self.num // self.denominator
 
     def __add__(self, other):
         the_lcm = math.lcm(self.denominator, other.denominator)
@@ -88,13 +99,14 @@ class Fraction:
         return Fraction(numerator=(self.num * other.denominator), denominator=(self.denominator * other.num))
 
     def __floordiv__(self, other):
-        pass
+        return Fraction(
+            numerator=(self.num * other.denominator), denominator=(self.denominator * other.num)).__floor__()
 
     def __bool__(self):
         return True
 
     def __pow__(self, power, modulo=None):
-        pass
+        return Fraction(numerator=Number(self.num ** power), denominator=Number(self.num ** power))
 
     def __abs__(self):
         return Fraction(numerator=abs(self.num), denominator=self.denominator)  # denominator will always be positive
@@ -134,16 +146,16 @@ class Imaginary:
                         which_is_imaginary = False
         if which_is_imaginary:
             if imaginary_part != "":
-                self.imaginary_part = int(imaginary_part)
+                self.imaginary_part = Number(imaginary_part)
             else:
                 self.imaginary_part = 1
-            self.real_part = int(real_part)
+            self.real_part = Number(real_part)
         else:
             if real_part != "":
-                self.imaginary_part = int(real_part)
+                self.imaginary_part = Number(real_part)
             else:
                 self.imaginary_part = 1
-            self.real_part = int(imaginary_part)
+            self.real_part = Number(imaginary_part)
 
     def __str__(self):
         return self.math_form
@@ -179,15 +191,13 @@ class Imaginary:
         return Imaginary(ans)
 
     def __pow__(self, power, modulo=None):
-        if not (modulo is None):
-            return NotImplementedError
         ans = self
         for i in range(0, power):
             ans = ans * self
         return Imaginary(ans)
 
     def __mod__(self, other):
-        return NotImplementedError
+        return Imaginary((str(self.imaginary_part % other.imaginary_part)+"i+"+str(self.real_part % other.real_part)))
 
     def format(self, latex=False):
         """
@@ -242,7 +252,7 @@ class Variable:
         self.name = str(name)
         if coefficient is None:
             self.coefficient = 1
-        self.coefficient = int(coefficient)
+        self.coefficient = Number(coefficient)
         if power is None:
             power = 1
         self.power = power
@@ -287,10 +297,10 @@ class Variable:
             return "error " + other.name + " != " + self.name
 
     def __neg__(self):
-        self.coefficient.__neg__()
+        return Variable(coefficient=self.coefficient.__neg__(), power=self.power, name=self.name)
 
     def __pow__(self, power, modulo=None):
-        pass
+        return Variable(name=self.name, coefficient=(self.coefficient ** power), power=(self.power*power))
 
     def __abs__(self):
         return Variable(name=self.name, coefficient=abs(self.coefficient))
