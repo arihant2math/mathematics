@@ -20,6 +20,6 @@ setuptools.setup(
         "Operating System :: OS Independent",
     ],
     python_requires='>=3.6',
-    install_requires=["statistics==1.0.3.5", "packaging==20.8", "pytest==6.2.1", "typing==3.7.4.3"],
+    install_requires=["statistics==1.0.3.5"],
     py_modules=["number_theory", "counting_and_probability", "algebra"]
 )
