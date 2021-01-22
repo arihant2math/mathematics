@@ -1,4 +1,7 @@
 class Probability:
+    """
+    This implements basic probability functions
+    """
     def __init__(self, desired_outcomes, all_outcomes):
         self.desired_outcomes = desired_outcomes
         self.all_outcomes = all_outcomes

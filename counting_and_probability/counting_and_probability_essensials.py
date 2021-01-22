@@ -111,13 +111,10 @@ def multiset_p(multiset_of_strings):
     return num / den
 
 
-# def sigma(oper, start, stop, if_statement):
-#     ans = 0
-#     for item in if_statement:
-#         if item == " ":
-#             pass
-#
-#     for i in range(start, stop + 1):
-#         func = function(oper)
-#         ans = ans + func.solve(i, oper)
-#     return ans
+def sigma(oper, start, stop, if_statement):
+    raise NotImplementedError
+    ans = 0
+    for i in range(start, stop + 1):
+        func = Function(oper)
+        ans = ans + func.solve(i, oper)
+    return ans

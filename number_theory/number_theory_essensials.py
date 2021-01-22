@@ -112,9 +112,9 @@ def euclidean_algorithm(a, b, want_fancy):
         return li
 
 
-def extended_euclidean_algorithm():
-    # should have param number
-    return NotImplemented
+# def extended_euclidean_algorithm():
+#     # should have param number
+#     return NotImplemented
 
 
 def repeated_squaring(number, power):
