@@ -1,4 +1,11 @@
+"""The function class"""
+
+
 class Function:
+    """
+    Function class
+    """
+
     def __init__(self, function):
         breaker = []
         for item in function:
@@ -18,6 +25,7 @@ class Function:
         self.function = function
 
     def solve(self, number):
+        """solves the function for a given number"""
         ans = ""
         for item in self.function:
             if item.isalpha:

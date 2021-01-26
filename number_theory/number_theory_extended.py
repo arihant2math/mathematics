@@ -9,7 +9,7 @@ import math
 def partial_sum_for_half_plus_fourth(n):
     result = 0
     for i in range(1, n + 1):
-        result = result + 1 / i
+        result += 1 / i
     return result
 
 

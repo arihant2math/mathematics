@@ -1,4 +1,4 @@
-from counting_and_probability import function
+from counting_and_probability import function, Function
 import itertools
 from math import *
 
@@ -111,10 +111,9 @@ def multiset_p(multiset_of_strings):
     return num / den
 
 
-def sigma(oper, start, stop, if_statement):
-    raise NotImplementedError
+def sigma(oper, start, stop):
     ans = 0
     for i in range(start, stop + 1):
         func = Function(oper)
-        ans = ans + func.solve(i, oper)
+        ans = ans + func.solve(i)
     return ans

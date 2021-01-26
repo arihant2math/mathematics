@@ -383,6 +383,3 @@ class Equation:
         self.expression_two = Expression(expression_two)
         self.expression_one.simplify()
         self.expression_two.simplify()
-
-    def solve(self):
-        raise NotImplementedError
