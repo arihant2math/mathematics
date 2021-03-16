@@ -19,11 +19,11 @@ class Number(int):
         if (type(power) == int) or (type(power) == Number):
             return Number(self.num ** power)
         elif type(power) == Fraction:
-            return (self.num ** power.num) ** (1.0/float(power.denominator))
+            return (self.num ** power.num) ** (1.0 / float(power.denominator))
         else:
             raise TypeError
 
-    def sum_digits(self):
+    def digit_sum(self):
         """Returns the sum of all the digits"""
         str_num = str(self.num)
         ans = Number(0)
@@ -31,7 +31,7 @@ class Number(int):
             ans += Number(item)
         return ans
 
-    def product_digits(self):
+    def digit_product(self):
         """Returns the sum of all the digits"""
         str_num = str(self.num)
         ans = Number(0)
@@ -41,30 +41,25 @@ class Number(int):
 
 
 class Fraction:
-    """A fraction class that emulates a fraction"""
+    """A fraction class"""
 
     def __init__(self, s="", numerator=None, denominator=None):
         if (numerator is None) or (denominator is None):
-            s = str(s)
-            numerator = ""
-            denominator = ""
-            is_numerator = True
-            for item in s:
-                if item != " ":
-                    if item == "/":
-                        is_numerator = False
-                    elif is_numerator:
-                        numerator += item
-                    else:
-                        denominator += item
-        self.num = int(numerator)
+            s = s.replace(" ", "")
+            s = str(s).split("/")
+            self.num = s[0]
+            self.denominator = s[1]
+        else:
+            self.num = Number(numerator)
+            self.denominator = Number(denominator)
         if denominator == 0:
             raise ZeroDivisionError
         if int(denominator) > 0:
-            self.denominator = Number(denominator)
+            self.denominator = denominator
         else:
             self.denominator = abs(denominator)
             self.num = -Number(self.num)
+        self.__simplify()
 
     def __str__(self):
         div_by = math.gcd(self.num, self.denominator)
@@ -111,6 +106,22 @@ class Fraction:
     def __abs__(self):
         return Fraction(numerator=abs(self.num), denominator=self.denominator)  # denominator will always be positive
 
+    def simplify(self):
+        """
+        Simplifies the Fraction
+        :return: Fraction
+        """
+        div_by = math.gcd(self.num, self.denominator)
+        self.num //= div_by
+        self.denominator //= div_by
+        return Fraction(numerator=self.num, denominator=self.denominator)
+
+    def __simplify(self):
+        div_by = math.gcd(self.num, self.denominator)
+        self.num //= div_by
+        self.denominator //= div_by
+        return Fraction(numerator=self.num, denominator=self.denominator)
+
 
 class Imaginary:
     """
@@ -118,47 +129,16 @@ class Imaginary:
     """
 
     def __init__(self, num):
-        num = str(num).lower()
-        breaker = []
-        for item in num:
-            if item != " ":
-                breaker.append(item)
-        num = ""
-        for item in breaker:
-            num += item
-
-        self.math_form = num
-        imaginary_part = ""
-        real_part = ""
-        right_side_now = False
-        which_is_imaginary = True
-        for item in num:
-            if item == "+":
-                right_side_now = True
-            else:
-                if right_side_now:
-                    if item != "i":
-                        imaginary_part += item
-                else:
-                    if item != "i":
-                        real_part += item
-                    if item == "i":
-                        which_is_imaginary = False
-        if which_is_imaginary:
-            if imaginary_part != "":
-                self.imaginary_part = Number(imaginary_part)
-            else:
-                self.imaginary_part = 1
-            self.real_part = Number(real_part)
+        num = str(num).lower().replace(" ", "").split("+")
+        if "i" in num[0]:
+            self.imaginary_part = int(num[0][1:len(num[0])])
+            self.real_part = Number(num[2])
         else:
-            if real_part != "":
-                self.imaginary_part = Number(real_part)
-            else:
-                self.imaginary_part = 1
-            self.real_part = Number(imaginary_part)
+            self.imaginary_part = int(num[0][1:len(num[0])])
+            self.real_part = Number(num[2])
 
     def __str__(self):
-        return self.math_form
+        return str(self.real_part) + " + " + str(self.imaginary_part) + "i"
 
     def __add__(self, other):
         real = self.real_part + other.real_part
@@ -197,11 +177,12 @@ class Imaginary:
         return Imaginary(ans)
 
     def __mod__(self, other):
-        return Imaginary((str(self.imaginary_part % other.imaginary_part)+"i+"+str(self.real_part % other.real_part)))
+        return Imaginary(
+            (str(self.imaginary_part % other.imaginary_part) + "i+" + str(self.real_part % other.real_part)))
 
     def format(self, latex=False):
         """
-        formats an imagery number into mathematical format.
+        formats an imaginary number into mathematical format.
         :return: str
         """
         real = self.real_part
@@ -225,37 +206,31 @@ class Variable:
         :type coefficient: int
         :type power: int
         """
-        if (name is None) or (coefficient is None):
-            odd = [" ", "@", "*", "&"]
-            breaker = []
-            for item in s:
-                if item != " ":
-                    breaker.append(item)
-            right_after_name = False
-            for item in breaker:
-                if right_after_name:
-                    if item == "*":
-                        right_after_name = False
-                        odd = True
-                elif (name is None) and (str(item).isalpha()) and (item not in odd):
-                    name = item
-                    breaker.remove(item)
-                    right_after_name = True
-                elif (name is not None) and (str(item).isalpha()) and (item not in odd):
-                    print("error You have to have one variable name")
-
-            if (breaker[len(breaker) - 1] == "*") and (len(breaker) >= 1):
-                breaker.remove(breaker[len(breaker) - 1])
-            coefficient = ""
-            for item in breaker:
-                coefficient += item
-        self.name = str(name)
-        if coefficient is None:
-            self.coefficient = 1
-        self.coefficient = Number(coefficient)
-        if power is None:
-            power = 1
-        self.power = power
+        if (name is None) or (coefficient is None) or (power is None):
+            s.replace("*", " ")
+            s.replace("^", "pow")
+            sl_old = s.split("*")
+            sl = []
+            for item in sl_old:
+                sl.append(item.split("pow"))
+            if str(sl[0]).isalpha():
+                self.name = str(sl[0][0])
+                self.power = int(sl[0][1])
+                if len(sl) == 2:
+                    self.coefficient = int(sl[1][0])
+                else:
+                    self.coefficient = 1
+            else:
+                self.name = str(sl[1][0])
+                if len(sl[1]) == 2:
+                    self.power = int(sl[1][1])
+                else:
+                    self.power = 1
+                self.coefficient = int(sl[0][0])
+        else:
+            self.power = power
+            self.coefficient = coefficient
+            self.name = name
 
     def __str__(self):
         if self.coefficient != 1:
@@ -264,16 +239,20 @@ class Variable:
             return str(self.name)
 
     def __add__(self, other):
-        if other.name == self.name:
-            return Variable(name=self.name, coefficient=self.coefficient + other.coefficient)
+        if (other.name == self.name) and (other.power == self.power):
+            return Variable(name=self.name, coefficient=self.coefficient + other.coefficient, power=self.power)
         elif other.name != self.name:
             return "error " + other.name + " != " + self.name
+        else:
+            return "error the powers are not equal"
 
     def __sub__(self, other):
-        if other.name == self.name:
-            return Variable(name=self.name, coefficient=self.coefficient + other.coefficient)
+        if (other.name == self.name) and (other.power == self.power):
+            return Variable(name=self.name, coefficient=self.coefficient - other.coefficient)
         elif other.name != self.name:
             return "error " + other.name + " != " + self.name
+        else:
+            return "error the powers are not equal"
 
     def __mul__(self, other):
         if other.name == self.name:
@@ -300,86 +279,72 @@ class Variable:
         return Variable(coefficient=self.coefficient.__neg__(), power=self.power, name=self.name)
 
     def __pow__(self, power, modulo=None):
-        return Variable(name=self.name, coefficient=(self.coefficient ** power), power=(self.power*power))
+        return Variable(name=self.name, coefficient=(self.coefficient ** power), power=(self.power * power))
 
     def __abs__(self):
         return Variable(name=self.name, coefficient=abs(self.coefficient))
 
 
 class Term:
+    """
+    A term
+    """
+
     def __init__(self, s):
-        breaker = []
-        has_variable = False
+        term = []
+        current_var = ""
         for item in s:
-            if not has_variable:
-                if item == "*" or "/":
-                    raise Exception("Not a term")
-                elif item.isalpha:
-                    has_variable = True
-                elif item != " ":
-                    breaker.append(item)
-        if has_variable:
-            self.operate = Variable(s=s)
-        else:
-            self.operate = Number(s)
-        self.has_variable = has_variable
+            if not s.isalpha:
+                current_var += item
+            else:
+                term.append(Variable(current_var))
+                current_var = item
+        self.term = term
 
     def __neg__(self):
-        self.operate.__neg__()
+        to_return = ""
+        for item in self.term:
+            to_return += (-item)
+        return Variable(to_return)
 
     def simplify(self):
-        if self.has_variable:
-            self.operate.simplify
+        """
+        Will simplify the term
+        """
+        pass
 
 
 class Expression:
+    """
+    Expression class
+    """
     def __init__(self, expression):
-        breaker = []
-        terms = []
-        term = ""
-        for item in expression:
-            if item != ' ':
-                breaker.append(item)
-        positive = True
+        expression = expression.replace("-", "+-")
+        breaker = expression.split("+")
+        self.terms = []
         for item in breaker:
-            if item == "+":
-                positive = True
-                if positive:
-                    terms.append(Term(term))
-                    term = ""
-                else:
-                    terms.append(-Term(term))
-                    term = ""
-            elif item == "-":
-                positive = False
-                if positive:
-                    terms.append(Term(term))
-                    term = ""
-                else:
-                    terms.append(-Term(term))
-                    term = ""
-            else:
-                term += item
-        breaker = []
-        for term in terms:
-            for item in term:
-                if item.isalpha():
-                    breaker.append(Variable(term))
-                    break
-        self.terms = breaker
-        self.expression = expression
+            self.terms.append(Term(item))
 
     def __str__(self):
         return self.terms
 
     def simplify(self):
+        """
+        Simplifies the expression, does not return anything
+        """
         for item in self.terms:
             item.simplify()
 
 
 class Equation:
-    def __init__(self, expression_one, expression_two):
-        self.expression_one = Expression(expression_one)
-        self.expression_two = Expression(expression_two)
+    """Equation"""
+    def __init__(self, s, expression_one, expression_two):
+        if (expression_one is None) or (expression_two is None):
+            s = s.replace(" ", "").split("=")
+            self.expression_one = s[0]
+            self.expression_two = s[1]
+        else:
+            self.expression_one = Expression(expression_one)
+            self.expression_two = Expression(expression_two)
         self.expression_one.simplify()
         self.expression_two.simplify()
