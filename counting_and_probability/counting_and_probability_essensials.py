@@ -3,7 +3,7 @@ import itertools
 from math import *
 
 
-def totient_fuction(m, print_units):
+def totient(m, print_units=False):
     units = []
     for i in range(1, m):
         if gcd(i, m) == 1:
