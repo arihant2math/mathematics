@@ -9,9 +9,9 @@ def is_prime_wilsons_theorem(num):
     """Check for primality using wilsons theorem"""
     if num == 1 or num == 0:
         return False
-    if num > 0:
+    if num < 0:
         return False
-    num = abs(num)
+    num = num
     return math.factorial(num - 1) % num == num - 1
 
 
@@ -26,7 +26,7 @@ def is_prime(num):
     """Checks if the number is prime using fermats little theorem if the number is greater that 1000"""
     if num == 1 or num == 0:
         return False
-    if num > 0:
+    if num < 0:
         return False
     if num > 1000:
         return all(i ** (num - 1) % num == 1 for i in range(2, num))
@@ -34,7 +34,7 @@ def is_prime(num):
     return math.factorial(n - 1) % n == n - 1
 
 
-def prime_gen(start, stop=100, want_list=True):
+def prime_gen(stop, start=1, want_list=True):
     """Generates primes from start=>stop"""
     if start is None:
         start = 1
