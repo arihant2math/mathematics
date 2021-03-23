@@ -36,6 +36,13 @@ jobs:
         flake8 . --count --exit-zero --max-complexity=10 --max-line-length=127 --statistics
     - name: Test with unittest
       run: |
+        # test each module
         cd number_theory
+        python -m unittest discover -t ..
+        cd ..
+        cd algebra
+        python -m unittest discover -t ..
+        cd ..
+        cd counting_and_probability
         python -m unittest discover -t ..
         cd ..
