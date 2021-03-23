@@ -51,6 +51,11 @@ def prime_gen(start, stop=100, want_list=True):
 
 
 def mersenne(n):
+    """
+    Returns the mersenne of the number ((2**n)-1)
+    :param n:
+    :return:
+    """
     return (2 ** n) - 1
 
 

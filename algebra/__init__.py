@@ -318,6 +318,7 @@ class Expression:
     """
     Expression class
     """
+
     def __init__(self, expression):
         expression = expression.replace("-", "+-")
         breaker = expression.split("+")
@@ -338,6 +339,7 @@ class Expression:
 
 class Equation:
     """Equation"""
+
     def __init__(self, s, expression_one, expression_two):
         if (expression_one is None) or (expression_two is None):
             s = s.replace(" ", "").split("=")
@@ -348,3 +350,56 @@ class Equation:
             self.expression_two = Expression(expression_two)
         self.expression_one.simplify()
         self.expression_two.simplify()
+
+    def degree(self):
+        """
+        Finds the degree
+        """
+        max_power = 0
+        for term in self.expression_one.terms:
+            for var in term.term:
+                if var.power > max_power:
+                    max_power = var.power
+
+        for term in self.expression_two.terms:
+            for var in term.term:
+                if var.power > max_power:
+                    max_power = var.power
+        return max_power
+
+    def number_of_vars(self):
+        """
+        Finds the number of different variables in the equation.
+        """
+        var_list = []
+        for term in self.expression_one.terms:
+            for var in term.term:
+                if var.name not in var_list:
+                    var_list.append(var.name)
+        for term in self.expression_two.terms:
+            for var in term.term:
+                if var.name not in var_list:
+                    var_list.append(var.name)
+
+    def solve(self):
+        """
+        solves the equation
+        """
+        d = self.degree()
+        if d == 1:
+            if self.number_of_vars() != 1:
+                raise Exception(NotImplementedError)
+            else:
+                expression_one_list = []
+                expression_two_list = []
+                for term in self.expression_one.terms:
+                    for var in term.term:
+                        expression_one_list.append(var)
+                for term in self.expression_two.terms:
+                    for var in term.term:
+                        expression_two_list.append(var)
+
+                for item in expression_one_list:
+                    for thing in expression_two_list:
+                        if item.name == thing.name:
+                            pass
