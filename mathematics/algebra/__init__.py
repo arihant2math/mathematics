@@ -207,6 +207,7 @@ class Variable:
         :type power: int
         """
         if (name is None) or (coefficient is None) or (power is None):
+            print(s)
             s.replace("*", " ")
             s.replace("^", "pow")
             sl_old = s.split("*")
@@ -340,7 +341,7 @@ class Expression:
 class Equation:
     """Equation"""
 
-    def __init__(self, s, expression_one, expression_two):
+    def __init__(self, s, expression_one=None, expression_two=None):
         if (expression_one is None) or (expression_two is None):
             s = s.replace(" ", "").split("=")
             self.expression_one = s[0]

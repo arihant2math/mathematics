@@ -43,6 +43,6 @@ jobs:
         cd algebra
         python -m unittest discover -t ..
         cd ..
-        cd counting_and_probability
+        cd counting
         python -m unittest discover -t ..
         cd ..

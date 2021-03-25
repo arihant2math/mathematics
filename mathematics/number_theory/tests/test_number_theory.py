@@ -1,5 +1,5 @@
 import unittest
-from number_theory import number_theory_essensials as number_theory
+from mathematics import number_theory
 
 
 class TestIsPrimeWilsonsTheorem(unittest.TestCase):

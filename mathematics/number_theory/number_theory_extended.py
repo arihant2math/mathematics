@@ -1,5 +1,5 @@
 import statistics
-from number_theory import number_theory_essensials
+from mathematics import number_theory
 import math
 
 
@@ -40,7 +40,7 @@ def sieve_numbers(num):
 def lucas_lehmer_gen(n):
     answer = []
     for j in range(1, n):
-        if number_theory_essensials.is_prime(j):
+        if number_theory.is_prime(j):
             if lucas_lehmer(j):
                 print(j, lucas_lehmer(j))
                 n = input("Continue?")
@@ -147,7 +147,7 @@ def addition_sums_mod_n_gen(start, stop):
 def patern_mod_n_adding_gen_primes(end, start_1, start_2):
     lengths = []
     for mod in range(start_1, end + 1):
-        if number_theory_essensials.is_prime(mod):
+        if number_theory.is_prime(mod):
             print("mod=" + str(mod) + ":")
             for number in range(start_2, mod):
                 print("mod=" + str(mod) + " number=" + str(number) + ":" + str(pattern_mod_n_adding(number, mod)))
@@ -177,7 +177,7 @@ def prime_mult(n):
 
 def prime_mult_gen(n):
     for i in range(1, n):
-        if number_theory_essensials.is_prime(i):
+        if number_theory.is_prime(i):
             prime_mult(i)
 
 
@@ -193,12 +193,12 @@ def powers_of_x_plus_1_mod_prime_gen(x, prime, stop_p):
 
 def totient_function_for_1_number(mod):
     for i in range(1, 1000000000):
-        if number_theory_essensials.totient_function(i) == mod:
+        if number_theory.totient_function(i) == mod:
             print(i)
 
 
 def squares_mod_m(stop, m):
-    begining = number_theory_essensials.nth_power(stop, 2)
+    begining = number_theory.nth_power(stop, 2)
     ans = []
     for item in begining:
         number = int(item) % m
@@ -207,7 +207,7 @@ def squares_mod_m(stop, m):
 
 
 def nth_power_mod_m(stop, m, power):
-    beginning = number_theory_essensials.nth_power(stop, power)
+    beginning = number_theory.nth_power(stop, power)
     ans = []
     check = 1
     for item in beginning:
@@ -235,7 +235,7 @@ def distance(mod, number):
 
 
 def special_exclusion_partition(n, i):
-    x = number_theory_essensials.partition(n)
+    x = number_theory.partition(n)
     for item in x:
         if str(i) not in item:
             x.remove(item)

@@ -12,7 +12,7 @@ setuptools.setup(
     long_description=long_description,
     long_description_content_type="text/markdown",
     url="https://github.com/arihant2math/mathemathics",
-    packages=["number_theory", "counting_and_probability", "algebra"],
+    packages=["mathematics"],
     classifiers=[
         "Development Status :: 3 - Alpha",
         "Programming Language :: Python :: 3",
@@ -21,5 +21,5 @@ setuptools.setup(
     ],
     python_requires='>=3.6',
     install_requires=["statistics==1.0.3.5"],
-    py_modules=["number_theory", "counting_and_probability", "algebra"]
+    py_modules=["number_theory", "counting", "algebra"]
 )

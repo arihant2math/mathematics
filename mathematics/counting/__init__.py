@@ -1,4 +1,4 @@
-from counting_and_probability import function, Function
+from mathematics.counting.function import Function
 import itertools
 from math import *
 
