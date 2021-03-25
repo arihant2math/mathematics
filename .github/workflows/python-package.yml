@@ -37,13 +37,5 @@ jobs:
     - name: Test with unittest
       run: |
         cd mathematics
-        # test each module
-        cd number_theory
-        python -m unittest discover -t ..
-        cd ..
-        cd algebra
-        python -m unittest discover -t ..
-        cd ..
-        cd counting
         python -m unittest discover -t ..
         cd ..
