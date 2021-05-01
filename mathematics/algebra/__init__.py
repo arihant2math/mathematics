@@ -251,7 +251,7 @@ class Variable:
 
 class Term:
     """
-    A term
+    Emulates a term
     """
 
     def __init__(self, s):
