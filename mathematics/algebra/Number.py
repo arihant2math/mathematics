@@ -8,11 +8,35 @@ class Number(int):
         super().__init__()
         self.num = num
 
-    def __or__(self, sec_num):
-        if (sec_num / self.num) % 1 == 0:
-            return True
+    def __str__(self):
+        return str(self.num)
+
+    def __int__(self):
+        return self.num
+
+    def __add__(self, other):
+        if (type(other) == int) or (type(other) == Number):
+            return Number(int(self) + int(other))
+        elif type(other) == "Fraction":
+            return other+int(self)
         else:
-            return False
+            raise TypeError
+
+    def __sub__(self, other):
+        if (type(other) == int) or (type(other) == Number):
+            return Number(int(self) - int(other))
+        elif type(other) == "Fraction":
+            return -other+int(self)
+        else:
+            raise TypeError
+
+    def __mul__(self, other):
+        if (type(other) == int) or (type(other) == Number):
+            return Number(int(self)*int(other))
+        elif type(other) == "Fraction":
+            return other*self
+        else:
+            raise TypeError
 
     def __pow__(self, power, modulo=None):
         if (type(power) == int) or (type(power) == Number):
@@ -21,6 +45,12 @@ class Number(int):
             return (self.num ** power.num) ** (1.0 / float(power.denominator))
         else:
             raise TypeError
+
+    def __or__(self, sec_num):
+        if (sec_num / self.num) % 1 == 0:
+            return True
+        else:
+            return False
 
     def digit_sum(self):
         """Returns the sum of all the digits"""

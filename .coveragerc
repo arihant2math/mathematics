@@ -1,5 +1,2 @@
 [run]
-source = 
-        number_theory
-        algebra
-        counting_and_probability
+source = mathematics

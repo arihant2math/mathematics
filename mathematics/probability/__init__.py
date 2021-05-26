@@ -1,18 +1,21 @@
+from mathematics.algebra import Fraction, Number
+
+
 class Probability:
     """
     This implements basic probability functions
     """
+
     def __init__(self, desired_outcomes, all_outcomes):
         self.desired_outcomes = desired_outcomes
         self.all_outcomes = all_outcomes
 
     def value(self):
-        v = len(set(self.desired_outcomes)) / len(set(self.all_outcomes))
-        return v
+        return Fraction(numerator=len(self.desired_outcomes), denominator=len(self.all_outcomes))
 
     def complement(self):
-        v = len(set(self.desired_outcomes)) / len(set(self.all_outcomes))
-        return 1 - v
+        v = Fraction(numerator=len(self.desired_outcomes), denominator=len(self.all_outcomes))
+        return Number(1) - v
 
 
 def are_mutually_exclusive(a, b):
