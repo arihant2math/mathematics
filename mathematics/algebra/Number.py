@@ -5,7 +5,7 @@ class Number(int):
     """The int class with extra features"""
 
     def __init__(self, num):
-        super().__init__()
+        super().__init__(num)
         self.num = num
 
     def __str__(self):

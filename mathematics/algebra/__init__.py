@@ -70,8 +70,10 @@ class Imaginary:
         imaginary = self.imaginary_part
         if not latex:
             ans = str(real) + "+" + str(imaginary) + "i"
-        else:
+        elif latex:
             ans = "$" + str(real) + "+" + str(imaginary) + "i" + "$"
+        else:
+            raise ValueError("Parameter latex should be a boolean")
         return ans
 
 
