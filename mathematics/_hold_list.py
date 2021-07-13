@@ -20,12 +20,13 @@ class HoldList:
     def delete(self):
         """Deletes the object, should be used with del"""
         import os
+
         os.remove(self.name + ".txt")
 
     def write(self):
         """Saves hold"""
         f = open(self.name + ".list", "w")
-        f.write(str(self.hold)[1:len(self.hold)-2])
+        f.write(str(self.hold)[1 : len(self.hold) - 2])
         f.close()
 
     def read(self):

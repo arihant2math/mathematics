@@ -97,9 +97,7 @@ def prime_factor(number):
 
 
 def factor(number):
-    return [
-        i for i in range(1, number + 1) if not number % i
-    ]
+    return [i for i in range(1, number + 1) if not number % i]
 
 
 def step_in_euclidean_algorithm(a, b):
@@ -112,7 +110,9 @@ def euclidean_algorithm(a, b, want_fancy):
     while li[3] != 0:
         li = step_in_euclidean_algorithm(li[1], li[3])
     if want_fancy:
-        return str(li[0]) + " = " + str(li[1]) + "(" + str(li[2]) + ")" + "+" + str(li[3])
+        return (
+            str(li[0]) + " = " + str(li[1]) + "(" + str(li[2]) + ")" + "+" + str(li[3])
+        )
     else:
         return li
 
@@ -144,9 +144,7 @@ def totient_function(m, print_units):
 
 
 def nth_power(stop, power):
-    return [
-        i ** power for i in range(1, stop + 1)
-    ]
+    return [i ** power for i in range(1, stop + 1)]
 
 
 def pascal_triangle(n, k):
@@ -216,10 +214,14 @@ def primitive_root(n):
 def primitive_root_table_multiplication(modulus):
     modulus = int(modulus)
     name = "primitive_root_table" + str(modulus) + ".txt"
-    file = open(name, 'w')
+    file = open(name, "w")
     file.write(
-        '\\documentclass{article}\n' + '\\usepackage[utf8]{inputenc}\n' + '\\begin{document}\n' +
-        '\\begin{tabular}{|c|c|}\n' + 'number & primitive root equivalent \\ \n')
+        "\\documentclass{article}\n"
+        + "\\usepackage[utf8]{inputenc}\n"
+        + "\\begin{document}\n"
+        + "\\begin{tabular}{|c|c|}\n"
+        + "number & primitive root equivalent \\ \n"
+    )
     primitive_roots = primitive_root(modulus)
     two_gens = False
     list_of_numbers = {}
@@ -228,7 +230,17 @@ def primitive_root_table_multiplication(modulus):
     if two_gens:
         for w, x, y, z in itertools.product(range(1, modulus, 2), repeat=4):
             if pow(int(w), int(x)) * pow(y, z) % int(modulus) not in list_of_numbers:
-                list_of_numbers.update({str(w) + " " + str(x) + " " + str(y) + " " + str(z): (pow(w, x) * pow(y, z))})
+                list_of_numbers.update(
+                    {
+                        str(w)
+                        + " "
+                        + str(x)
+                        + " "
+                        + str(y)
+                        + " "
+                        + str(z): (pow(w, x) * pow(y, z))
+                    }
+                )
         for key in list_of_numbers:
             w = x = y = z = 0
             var = ""
@@ -245,14 +257,26 @@ def primitive_root_table_multiplication(modulus):
                     var = ""
                 else:
                     var = var + item
-            new_key = "$" + str(w) + "^" + str(x) + "\\cdot" + str(y) + "^" + str(z) + "$"
-            line = new_key + " & " + "$" + str(modulus) + "^" + str(list_of_numbers[key]) + "$"
-            line = line + '\\ ' + '\n'
+            new_key = (
+                "$" + str(w) + "^" + str(x) + "\\cdot" + str(y) + "^" + str(z) + "$"
+            )
+            line = (
+                new_key
+                + " & "
+                + "$"
+                + str(modulus)
+                + "^"
+                + str(list_of_numbers[key])
+                + "$"
+            )
+            line = line + "\\ " + "\n"
             file.write(line)
     else:
         for i in range(1, modulus):
-            list_of_numbers.update({"$" + str(i) + "$": "$" + str(primitive_roots) + "^" + str(i) + "$"})
-    file.write('\\end{tabular}\n' + '\\end{document}\n')
+            list_of_numbers.update(
+                {"$" + str(i) + "$": "$" + str(primitive_roots) + "^" + str(i) + "$"}
+            )
+    file.write("\\end{tabular}\n" + "\\end{document}\n")
     file.close()
 
 

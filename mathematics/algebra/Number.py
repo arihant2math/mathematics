@@ -17,8 +17,8 @@ class Number(int):
     def __add__(self, other):
         if (type(other) == int) or (type(other) == Number):
             return Number(int(self) + int(other))
-        elif type(other) == "Fraction":
-            return other+int(self)
+        if type(other) == "Fraction":
+            return other + int(self)
         else:
             raise TypeError
 
@@ -26,15 +26,15 @@ class Number(int):
         if (type(other) == int) or (type(other) == Number):
             return Number(int(self) - int(other))
         elif type(other) == "Fraction":
-            return -other+int(self)
+            return -other + int(self)
         else:
             raise TypeError
 
     def __mul__(self, other):
         if (type(other) == int) or (type(other) == Number):
-            return Number(int(self)*int(other))
+            return Number(int(self) * int(other))
         elif type(other) == "Fraction":
-            return other*self
+            return other * self
         else:
             raise TypeError
 

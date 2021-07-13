@@ -1,7 +1,7 @@
 class Matrix:
     def __init__(self, list_of_lists):
         self.values = list_of_lists
-        self.order = str(len(list_of_lists)) + "/"+str(len(list_of_lists[0]))
+        self.order = str(len(list_of_lists)) + "/" + str(len(list_of_lists[0]))
         temp = len(self.values[0])
         for item in list_of_lists:
             if len(item) != temp:

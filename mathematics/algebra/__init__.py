@@ -12,10 +12,10 @@ class Imaginary:
     def __init__(self, num):
         num = str(num).lower().replace(" ", "").split("+")
         if "i" in num[0]:
-            self.imaginary_part = int(num[0][1:len(num[0])])
+            self.imaginary_part = int(num[0][1 : len(num[0])])
             self.real_part = Number(num[2])
         else:
-            self.imaginary_part = int(num[0][1:len(num[0])])
+            self.imaginary_part = int(num[0][1 : len(num[0])])
             self.real_part = Number(num[2])
 
     def __str__(self):
@@ -34,20 +34,32 @@ class Imaginary:
         return Imaginary(ans)
 
     def __mul__(self, other):
-        real = (self.real_part * other.real_part) - (self.imaginary_part * other.real_part)
-        imaginary = (self.imaginary_part * other.real_part) + (self.real_part * other.imaginary_part)
+        real = (self.real_part * other.real_part) - (
+            self.imaginary_part * other.real_part
+        )
+        imaginary = (self.imaginary_part * other.real_part) + (
+            self.real_part * other.imaginary_part
+        )
         ans = str(real) + "+" + str(imaginary) + "i"
         return Imaginary(ans)
 
     def __truediv__(self, other):
-        real = (self.real_part / other.real_part) - (self.imaginary_part / other.real_part)
-        imaginary = (self.imaginary_part / other.real_part) + (self.real_part / other.imaginary_part)
+        real = (self.real_part / other.real_part) - (
+            self.imaginary_part / other.real_part
+        )
+        imaginary = (self.imaginary_part / other.real_part) + (
+            self.real_part / other.imaginary_part
+        )
         ans = str(real) + "+" + str(imaginary) + "i"
         return Imaginary(ans)
 
     def __floordiv__(self, other):
-        real = (self.real_part // other.real_part) - (self.imaginary_part // other.real_part)
-        imaginary = (self.imaginary_part // other.real_part) + (self.real_part // other.imaginary_part)
+        real = (self.real_part // other.real_part) - (
+            self.imaginary_part // other.real_part
+        )
+        imaginary = (self.imaginary_part // other.real_part) + (
+            self.real_part // other.imaginary_part
+        )
         ans = str(real) + "+" + str(imaginary) + "i"
         return Imaginary(ans)
 
@@ -59,7 +71,12 @@ class Imaginary:
 
     def __mod__(self, other):
         return Imaginary(
-            (str(self.imaginary_part % other.imaginary_part) + "i+" + str(self.real_part % other.real_part)))
+            (
+                str(self.imaginary_part % other.imaginary_part)
+                + "i+"
+                + str(self.real_part % other.real_part)
+            )
+        )
 
     def format(self, latex=False):
         """
@@ -124,7 +141,11 @@ class Variable:
 
     def __add__(self, other):
         if (other.name == self.name) and (other.power == self.power):
-            return Variable(name=self.name, coefficient=self.coefficient + other.coefficient, power=self.power)
+            return Variable(
+                name=self.name,
+                coefficient=self.coefficient + other.coefficient,
+                power=self.power,
+            )
         elif other.name != self.name:
             return "error " + other.name + " != " + self.name
         else:
@@ -132,7 +153,9 @@ class Variable:
 
     def __sub__(self, other):
         if (other.name == self.name) and (other.power == self.power):
-            return Variable(name=self.name, coefficient=self.coefficient - other.coefficient)
+            return Variable(
+                name=self.name, coefficient=self.coefficient - other.coefficient
+            )
         elif other.name != self.name:
             return "error " + other.name + " != " + self.name
         else:
@@ -140,30 +163,45 @@ class Variable:
 
     def __mul__(self, other):
         if other.name == self.name:
-            return Variable(name=self.name, coefficient=(self.coefficient * other.coefficient),
-                            power=(self.power + other.power))
+            return Variable(
+                name=self.name,
+                coefficient=(self.coefficient * other.coefficient),
+                power=(self.power + other.power),
+            )
         elif other.name != self.name:
             return "error " + other.name + " != " + self.name
 
     def __truediv__(self, other):
         if other.name == self.name:
-            return Variable(name=self.name, coefficient=(self.coefficient / other.coefficient),
-                            power=(self.power - other.power))
+            return Variable(
+                name=self.name,
+                coefficient=(self.coefficient / other.coefficient),
+                power=(self.power - other.power),
+            )
         elif other.name != self.name:
             return "error " + other.name + " != " + self.name
 
     def __floordiv__(self, other):
         if other.name == self.name:
-            return Variable(name=self.name, coefficient=(self.coefficient // other.coefficient),
-                            power=(self.power - other.power))
+            return Variable(
+                name=self.name,
+                coefficient=(self.coefficient // other.coefficient),
+                power=(self.power - other.power),
+            )
         elif other.name != self.name:
             return "error " + other.name + " != " + self.name
 
     def __neg__(self):
-        return Variable(coefficient=self.coefficient.__neg__(), power=self.power, name=self.name)
+        return Variable(
+            coefficient=self.coefficient.__neg__(), power=self.power, name=self.name
+        )
 
     def __pow__(self, power, modulo=None):
-        return Variable(name=self.name, coefficient=(self.coefficient ** power), power=(self.power * power))
+        return Variable(
+            name=self.name,
+            coefficient=(self.coefficient ** power),
+            power=(self.power * power),
+        )
 
     def __abs__(self):
         return Variable(name=self.name, coefficient=abs(self.coefficient))
@@ -188,7 +226,7 @@ class Term:
     def __neg__(self):
         to_return = ""
         for item in self.term:
-            to_return += (-item)
+            to_return += -item
         return Variable(to_return)
 
     def simplify(self):

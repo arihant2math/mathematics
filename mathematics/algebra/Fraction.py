@@ -40,33 +40,52 @@ class Fraction:
         the_lcm = math.lcm(self.denominator, other.denominator)
         self_denominator_lcm = the_lcm // self.denominator
         other_denominator_lcm = the_lcm // other.denominator
-        return Fraction(numerator=((self.num * self_denominator_lcm) + (other.num * other_denominator_lcm)),
-                        denominator=(the_lcm + the_lcm))
+        return Fraction(
+            numerator=(
+                (self.num * self_denominator_lcm) + (other.num * other_denominator_lcm)
+            ),
+            denominator=(the_lcm + the_lcm),
+        )
 
     def __sub__(self, other):
         the_lcm = math.lcm(self.denominator, other.denominator)
         self_denominator_lcm = the_lcm // self.denominator
         other_denominator_lcm = the_lcm // other.denominator
-        return Fraction(((self.num * self_denominator_lcm) - (other.num * other_denominator_lcm)), (the_lcm + the_lcm))
+        return Fraction(
+            ((self.num * self_denominator_lcm) - (other.num * other_denominator_lcm)),
+            (the_lcm + the_lcm),
+        )
 
     def __mul__(self, other):
-        return Fraction(numerator=(self.num * other.num), denominator=(self.denominator * other.denominator))
+        return Fraction(
+            numerator=(self.num * other.num),
+            denominator=(self.denominator * other.denominator),
+        )
 
     def __truediv__(self, other):
-        return Fraction(numerator=(self.num * other.denominator), denominator=(self.denominator * other.num))
+        return Fraction(
+            numerator=(self.num * other.denominator),
+            denominator=(self.denominator * other.num),
+        )
 
     def __floordiv__(self, other):
         return Fraction(
-            numerator=(self.num * other.denominator), denominator=(self.denominator * other.num)).__floor__()
+            numerator=(self.num * other.denominator),
+            denominator=(self.denominator * other.num),
+        ).__floor__()
 
     def __bool__(self):
         return True
 
     def __pow__(self, power, modulo=None):
-        return Fraction(numerator=Number(self.num ** power), denominator=Number(self.num ** power))
+        return Fraction(
+            numerator=Number(self.num ** power), denominator=Number(self.num ** power)
+        )
 
     def __abs__(self):
-        return Fraction(numerator=abs(self.num), denominator=self.denominator)  # denominator will always be positive
+        return Fraction(
+            numerator=abs(self.num), denominator=self.denominator
+        )  # denominator will always be positive
 
     def simplify(self):
         """

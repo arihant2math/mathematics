@@ -87,10 +87,15 @@ def pattern_mod_n_multipling_gen(end, start_1, start_2):
     print("The median is:" + str(statistics.median(lengths)))
     print("The max is:" + str(max(lengths)))
     print("The min is:" + str(min(lengths)))
-    dictionary = {"Interquartile_range": str(statistics.median_high(lengths) - statistics.median_low(lengths)),
-                  "1st quartile": str(statistics.median_low(lengths)),
-                  "Third_quartiles": str(statistics.median_high(lengths)),
-                  "mean": float(statistics.mean(lengths)), "median": statistics.median(lengths)}
+    dictionary = {
+        "Interquartile_range": str(
+            statistics.median_high(lengths) - statistics.median_low(lengths)
+        ),
+        "1st quartile": str(statistics.median_low(lengths)),
+        "Third_quartiles": str(statistics.median_high(lengths)),
+        "mean": float(statistics.mean(lengths)),
+        "median": statistics.median(lengths),
+    }
     return dictionary
 
 
@@ -110,16 +115,26 @@ def pattern_mod_n_adding_gen(end, start_1, start_2):
     print("The median is:" + str(statistics.median(lengths)))
     print("The max is:" + str(max(lengths)))
     print("The min is:" + str(min(lengths)))
-    print("Interquartile range:" + str(statistics.median_high(lengths) - statistics.median_low(lengths)))
-    dictionary = {"Interquartile_range": str(statistics.median_high(lengths) - statistics.median_low(lengths)),
-                  "1st quartile": str(statistics.median_low(lengths)),
-                  "Third_quartiles": str(statistics.median_high(lengths)),
-                  "mean": float(statistics.mean(lengths)), "median": statistics.median(lengths)}
+    print(
+        "Interquartile range:"
+        + str(statistics.median_high(lengths) - statistics.median_low(lengths))
+    )
+    dictionary = {
+        "Interquartile_range": str(
+            statistics.median_high(lengths) - statistics.median_low(lengths)
+        ),
+        "1st quartile": str(statistics.median_low(lengths)),
+        "Third_quartiles": str(statistics.median_high(lengths)),
+        "mean": float(statistics.mean(lengths)),
+        "median": statistics.median(lengths),
+    }
     return dictionary
 
 
 # noinspection PyGlobalUndefined,PyGlobalUndefined,PyGlobalUndefined
-def pattern_mod_n_analytics_v1(end_1, start_1_1, start_2_1, end_2, start_1_2, start_2_2, the_function):
+def pattern_mod_n_analytics_v1(
+    end_1, start_1_1, start_2_1, end_2, start_1_2, start_2_2, the_function
+):
     global first, last
     if "add" in the_function:
         first = pattern_mod_n_adding_gen(end_1, start_1_1, start_2_1)
@@ -150,7 +165,14 @@ def patern_mod_n_adding_gen_primes(end, start_1, start_2):
         if number_theory.is_prime(mod):
             print("mod=" + str(mod) + ":")
             for number in range(start_2, mod):
-                print("mod=" + str(mod) + " number=" + str(number) + ":" + str(pattern_mod_n_adding(number, mod)))
+                print(
+                    "mod="
+                    + str(mod)
+                    + " number="
+                    + str(number)
+                    + ":"
+                    + str(pattern_mod_n_adding(number, mod))
+                )
                 z = int(len(pattern_mod_n_adding(number, mod)))
                 print("The length is " + str(z))
                 lengths.append(z)
@@ -159,11 +181,19 @@ def patern_mod_n_adding_gen_primes(end, start_1, start_2):
     print("The median is:" + str(statistics.median(lengths)))
     print("The max is:" + str(max(lengths)))
     print("The min is:" + str(min(lengths)))
-    print("Interquartile range:" + str(statistics.median_high(lengths) - statistics.median_low(lengths)))
-    dictionary = {"Interquartile_range": str(statistics.median_high(lengths) - statistics.median_low(lengths)),
-                  "1st quartile": str(statistics.median_low(lengths)),
-                  "Third_quartiles": str(statistics.median_high(lengths)),
-                  "mean": float(statistics.mean(lengths)), "median": statistics.median(lengths)}
+    print(
+        "Interquartile range:"
+        + str(statistics.median_high(lengths) - statistics.median_low(lengths))
+    )
+    dictionary = {
+        "Interquartile_range": str(
+            statistics.median_high(lengths) - statistics.median_low(lengths)
+        ),
+        "1st quartile": str(statistics.median_low(lengths)),
+        "Third_quartiles": str(statistics.median_high(lengths)),
+        "mean": float(statistics.mean(lengths)),
+        "median": statistics.median(lengths),
+    }
     return dictionary
 
 
@@ -246,6 +276,7 @@ def special_exclusion_partition(n, i):
 #     end=False
 #     ans=0
 #     inter=1
+
 
 def string_function(string):
     zero = 0

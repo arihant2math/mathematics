@@ -54,7 +54,7 @@ def generate_combinations(string, r):
     else:
         n = []
         for i in range(0, len(string)):
-            str_removed = string[:i] + string[i + 1:]
+            str_removed = string[:i] + string[i + 1 :]
             comb_next_iteration = generate_combinations(str_removed, r - 1)
             for element in comb_next_iteration:
                 la = string[i] + element
@@ -74,7 +74,7 @@ def generate_permutations(string, r):
     else:
         perms = []
         for i in range(0, len(string)):
-            str_removed = string[:i] + string[i + 1:]
+            str_removed = string[:i] + string[i + 1 :]
             comb_next_iteration = generate_permutations(str_removed, r - 1)
             for element in comb_next_iteration:
                 perms.append(string[i] + element)

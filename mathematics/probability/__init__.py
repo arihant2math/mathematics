@@ -11,10 +11,14 @@ class Probability:
         self.all_outcomes = all_outcomes
 
     def value(self):
-        return Fraction(numerator=len(self.desired_outcomes), denominator=len(self.all_outcomes))
+        return Fraction(
+            numerator=len(self.desired_outcomes), denominator=len(self.all_outcomes)
+        )
 
     def complement(self):
-        v = Fraction(numerator=len(self.desired_outcomes), denominator=len(self.all_outcomes))
+        v = Fraction(
+            numerator=len(self.desired_outcomes), denominator=len(self.all_outcomes)
+        )
         return Number(1) - v
 
 
