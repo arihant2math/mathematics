@@ -2,11 +2,15 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="594d2981-ca8f-4742-8cf8-fc8411ac8685" name="Default Changelist" comment="Reformated the package&#10;&#10;added testcases&#10;&#10;added _hold_list.py to help with grow_lists.py, might not make it to the 0.0.0 release">
+      <change afterPath="$PROJECT_DIR$/mathematics/algebra/Imaginary.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tests/test_algebra/test_number.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/INSTALL.md" beforeDir="false" afterPath="$PROJECT_DIR$/INSTALL.md" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/docs/algebra.rst" beforeDir="false" afterPath="$PROJECT_DIR$/docs/algebra.rst" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/installation.rst" beforeDir="false" afterPath="$PROJECT_DIR$/docs/installation.rst" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mathematics/algebra/Number.py" beforeDir="false" afterPath="$PROJECT_DIR$/mathematics/algebra/Number.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/mathematics/algebra/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/mathematics/algebra/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/test_algebra/test_init.py" beforeDir="false" afterPath="$PROJECT_DIR$/tests/test_algebra/test_init.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/test_algebra/test_init.py" beforeDir="false" afterPath="$PROJECT_DIR$/tests/test_algebra/test_imaginary.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -41,8 +45,10 @@
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent">
+    <property name="ASKED_SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="dart.analysis.tool.window.visible" value="false" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
@@ -58,7 +64,7 @@
       <recent name="D:\Documents\Programming\GitHub\mathematics\tests" />
     </key>
   </component>
-  <component name="RunManager" selected="Python tests.pytest for test_init.test_imaginary_add">
+  <component name="RunManager" selected="Python tests.pytest for tests.test_algebra.test_imaginary.test_imaginary_add">
     <configuration name="Unittests for test_hold_list.TestHoldList" type="tests" factoryName="Unittests" temporary="true" nameIsGenerated="true">
       <module name="mathematics" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -73,7 +79,7 @@
       <option name="_new_targetType" value="&quot;PYTHON&quot;" />
       <method v="2" />
     </configuration>
-    <configuration name="Unittests for test_init.TestProbability" type="tests" factoryName="Unittests" temporary="true" nameIsGenerated="true">
+    <configuration name="Unittests for tests.test_algebra.test_imaginary" type="tests" factoryName="Unittests" temporary="true" nameIsGenerated="true">
       <module name="mathematics" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -83,7 +89,7 @@
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <option name="_new_additionalArguments" value="&quot;&quot;" />
-      <option name="_new_target" value="&quot;test_init.TestProbability&quot;" />
+      <option name="_new_target" value="&quot;tests.test_algebra.test_imaginary&quot;" />
       <option name="_new_targetType" value="&quot;PYTHON&quot;" />
       <method v="2" />
     </configuration>
@@ -115,7 +121,7 @@
       <option name="_new_targetType" value="&quot;PATH&quot;" />
       <method v="2" />
     </configuration>
-    <configuration name="pytest for test_init.test_imaginary_add" type="tests" factoryName="py.test" temporary="true" nameIsGenerated="true">
+    <configuration name="pytest for tests.test_algebra.test_imaginary.test_imaginary_add" type="tests" factoryName="py.test" temporary="true" nameIsGenerated="true">
       <module name="mathematics" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -127,14 +133,14 @@
       <option name="_new_keywords" value="&quot;&quot;" />
       <option name="_new_parameters" value="&quot;&quot;" />
       <option name="_new_additionalArguments" value="&quot;&quot;" />
-      <option name="_new_target" value="&quot;test_init.test_imaginary_add&quot;" />
+      <option name="_new_target" value="&quot;tests.test_algebra.test_imaginary.test_imaginary_add&quot;" />
       <option name="_new_targetType" value="&quot;PYTHON&quot;" />
       <method v="2" />
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Python tests.pytest for test_init.test_imaginary_add" />
-        <item itemvalue="Python tests.Unittests for test_init.TestProbability" />
+        <item itemvalue="Python tests.pytest for tests.test_algebra.test_imaginary.test_imaginary_add" />
+        <item itemvalue="Python tests.Unittests for tests.test_algebra.test_imaginary" />
         <item itemvalue="Python tests.Unittests in D:/Documents/Programming/GitHub/mathematics/mathematics/algebra/tests/test_number.py" />
         <item itemvalue="Python tests.Unittests in D:/Documents/Programming/GitHub/mathematics/mathematics/tests/test_hold_list.py" />
         <item itemvalue="Python tests.Unittests for test_hold_list.TestHoldList" />

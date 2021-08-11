@@ -14,6 +14,9 @@ class Number(int):
     def __int__(self):
         return self.num
 
+    def __eq__(self, other):
+        return int(self) == int(other)
+
     def __add__(self, other):
         if (type(other) == int) or (type(other) == Number):
             return Number(self.num + other.num)

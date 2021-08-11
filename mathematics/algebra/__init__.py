@@ -1,106 +1,11 @@
 """This implements algebraic classes"""
-import math
 from mathematics.algebra.Number import Number
 from mathematics.algebra.Fraction import Fraction
-
-
-class Imaginary:
-    """
-    emulates an imaginary number.
-    """
-
-    def __init__(self, num):
-        num = str(num).lower().replace(" ", "").split("+")
-        if "i" in num[0]:
-            self.imaginary_part = Number((num[0]).replace("i", ""))
-            self.real_part = Number(num[1])
-        else:
-            self.imaginary_part = Number((num[1]).replace("i", ""))
-            self.real_part = Number(num[0])
-
-    def __str__(self):
-        return str(self.real_part) + "+" + str(self.imaginary_part) + "i"
-
-    def __eq__(self, other):
-        return (self.real_part == other.real_part) and (self.imaginary_part == other.imaginary_part)
-
-    def __add__(self, other):
-        real = int(self.real_part) + int(other.real_part)
-        imaginary = int(self.imaginary_part) + int(other.imaginary_part)
-        ans = str(imaginary) + "i" + "+" + str(real)
-        return Imaginary(ans)
-
-    def __sub__(self, other):
-        real = int(self.real_part) - int(other.real_part)
-        imaginary = int(self.imaginary_part) - int(other.imaginary_part)
-        ans = str(imaginary) + "i" + "+" + str(real)
-        return Imaginary(ans)
-
-    def __mul__(self, other):
-        real = (self.real_part * other.real_part) - (
-            self.imaginary_part * other.real_part
-        )
-        imaginary = (self.imaginary_part * other.real_part) + (
-            self.real_part * other.imaginary_part
-        )
-        ans = str(real) + "+" + str(imaginary) + "i"
-        return Imaginary(ans)
-
-    def __truediv__(self, other):
-        real = (self.real_part / other.real_part) - (
-            self.imaginary_part / other.real_part
-        )
-        imaginary = (self.imaginary_part / other.real_part) + (
-            self.real_part / other.imaginary_part
-        )
-        ans = str(real) + "+" + str(imaginary) + "i"
-        return Imaginary(ans)
-
-    def __floordiv__(self, other):
-        real = (self.real_part // other.real_part) - (
-            self.imaginary_part // other.real_part
-        )
-        imaginary = (self.imaginary_part // other.real_part) + (
-            self.real_part // other.imaginary_part
-        )
-        ans = str(real) + "+" + str(imaginary) + "i"
-        return Imaginary(ans)
-
-    def __pow__(self, power, modulo=None):
-        ans = self
-        for i in range(0, power):
-            ans = ans * self
-        return Imaginary(ans)
-
-    def __mod__(self, other):
-        return Imaginary(
-            (
-                str(self.imaginary_part % other.imaginary_part)
-                + "i+"
-                + str(self.real_part % other.real_part)
-            )
-        )
-
-    def format(self, latex=False):
-        """
-        formats an imaginary number into mathematical format.
-        :return: str
-        """
-        real = self.real_part
-        imaginary = self.imaginary_part
-        if not latex:
-            ans = str(real) + "+" + str(imaginary) + "i"
-        elif latex:
-            ans = "$" + str(real) + "+" + str(imaginary) + "i" + "$"
-        else:
-            raise ValueError("Parameter latex should be a boolean")
-        return ans
+from mathematics.algebra.Imaginary import Imaginary
 
 
 class Variable:
-    """
-    Emulates a Variable
-    """
+    """Emulates a Variable"""
 
     def __init__(self, s="", name=None, coefficient=None, power=None):
         """

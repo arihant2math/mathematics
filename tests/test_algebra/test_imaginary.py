@@ -1,4 +1,4 @@
-from mathematics.algebra import *
+from mathematics.algebra.Imaginary import Imaginary
 
 
 def test_imaginary_str():
