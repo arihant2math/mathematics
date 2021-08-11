@@ -2,13 +2,18 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="594d2981-ca8f-4742-8cf8-fc8411ac8685" name="Default Changelist" comment="Reformated the package&#10;&#10;added testcases&#10;&#10;added _hold_list.py to help with grow_lists.py, might not make it to the 0.0.0 release">
-      <change afterPath="$PROJECT_DIR$/mathematics/probability/tests/test_init.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.coveragerc" beforeDir="false" afterPath="$PROJECT_DIR$/.coveragerc" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mathematics/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/mathematics/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mathematics/algebra/Fraction.py" beforeDir="false" afterPath="$PROJECT_DIR$/mathematics/algebra/Fraction.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mathematics/algebra/Number.py" beforeDir="false" afterPath="$PROJECT_DIR$/mathematics/algebra/Number.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.github/workflows/python-package.yml" beforeDir="false" afterPath="$PROJECT_DIR$/.github/workflows/python-package.yml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/mathematics/algebra/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/mathematics/algebra/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mathematics/probability/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/mathematics/probability/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mathematics/algebra/tests/test_fraction.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mathematics/algebra/tests/test_number.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mathematics/counting/tests/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/import_for_test.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mathematics/counting/tests/test_counting.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mathematics/number_theory/tests/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/tests/test_algebra/test_init.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mathematics/number_theory/tests/test_number_theory.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mathematics/probability/tests/test_init.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mathematics/tests/test_hold_list.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mathematics/tests/test_hold_list_one_to_four.list" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/setup.py" beforeDir="false" afterPath="$PROJECT_DIR$/setup.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -18,8 +23,8 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="Python Script" />
         <option value="Python Unit Test" />
+        <option value="Python Script" />
       </list>
     </option>
   </component>

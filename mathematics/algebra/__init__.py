@@ -12,14 +12,17 @@ class Imaginary:
     def __init__(self, num):
         num = str(num).lower().replace(" ", "").split("+")
         if "i" in num[0]:
-            self.imaginary_part = int(num[0][1 : len(num[0])])
-            self.real_part = Number(num[2])
+            self.imaginary_part = int((num[0]).replace("i", ""))
+            self.real_part = Number(num[1])
         else:
-            self.imaginary_part = int(num[0][1 : len(num[0])])
-            self.real_part = Number(num[2])
+            self.imaginary_part = int((num[1]).replace("i", ""))
+            self.real_part = Number(num[0])
 
     def __str__(self):
         return str(self.real_part) + " + " + str(self.imaginary_part) + "i"
+
+    def __eq__(self, other):
+        return (self.real_part == other.real_part) and (self.imaginary_part == other.imaginary_part)
 
     def __add__(self, other):
         real = self.real_part + other.real_part
