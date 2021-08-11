@@ -1,5 +1,6 @@
-Welcome to The Mathematics Package
+Mathematics Package
 ================
+Welcome to the documentation for the Mathematics Package
 
 User's Guide
 ------------
