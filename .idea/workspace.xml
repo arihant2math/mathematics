@@ -3,6 +3,8 @@
   <component name="ChangeListManager">
     <list default="true" id="594d2981-ca8f-4742-8cf8-fc8411ac8685" name="Default Changelist" comment="Reformated the package&#10;&#10;added testcases&#10;&#10;added _hold_list.py to help with grow_lists.py, might not make it to the 0.0.0 release">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/INSTALL.md" beforeDir="false" afterPath="$PROJECT_DIR$/INSTALL.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/algebra.rst" beforeDir="false" afterPath="$PROJECT_DIR$/docs/algebra.rst" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/mathematics/algebra/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/mathematics/algebra/__init__.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/tests/test_algebra/test_init.py" beforeDir="false" afterPath="$PROJECT_DIR$/tests/test_algebra/test_init.py" afterDir="false" />
     </list>
