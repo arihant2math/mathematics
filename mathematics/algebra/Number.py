@@ -6,7 +6,7 @@ class Number(int):
 
     def __init__(self, num):
         super().__init__()
-        self.num = num
+        self.num = int(num)
 
     def __str__(self):
         return str(self.num)
@@ -16,7 +16,7 @@ class Number(int):
 
     def __add__(self, other):
         if (type(other) == int) or (type(other) == Number):
-            return Number(int(self) + int(other))
+            return Number(self.num + other.num)
         if type(other) == "Fraction":
             return other + int(self)
         else:

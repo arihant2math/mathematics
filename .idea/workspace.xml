@@ -2,18 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="594d2981-ca8f-4742-8cf8-fc8411ac8685" name="Default Changelist" comment="Reformated the package&#10;&#10;added testcases&#10;&#10;added _hold_list.py to help with grow_lists.py, might not make it to the 0.0.0 release">
-      <change beforePath="$PROJECT_DIR$/.github/workflows/python-package.yml" beforeDir="false" afterPath="$PROJECT_DIR$/.github/workflows/python-package.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mathematics/algebra/Number.py" beforeDir="false" afterPath="$PROJECT_DIR$/mathematics/algebra/Number.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/mathematics/algebra/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/mathematics/algebra/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mathematics/algebra/tests/test_fraction.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/mathematics/algebra/tests/test_number.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/mathematics/counting/tests/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/import_for_test.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mathematics/counting/tests/test_counting.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/mathematics/number_theory/tests/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/tests/test_algebra/test_init.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mathematics/number_theory/tests/test_number_theory.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/mathematics/probability/tests/test_init.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/mathematics/tests/test_hold_list.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/mathematics/tests/test_hold_list_one_to_four.list" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/setup.py" beforeDir="false" afterPath="$PROJECT_DIR$/setup.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/test_algebra/test_init.py" beforeDir="false" afterPath="$PROJECT_DIR$/tests/test_algebra/test_init.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -50,7 +42,6 @@
   <component name="PropertiesComponent">
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
-    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="dart.analysis.tool.window.visible" value="false" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
@@ -66,7 +57,7 @@
       <recent name="D:\Documents\Programming\GitHub\mathematics\tests" />
     </key>
   </component>
-  <component name="RunManager" selected="Python tests.Unittests for test_init.TestProbability">
+  <component name="RunManager" selected="Python tests.pytest for test_init.test_imaginary_add">
     <configuration name="Unittests for test_hold_list.TestHoldList" type="tests" factoryName="Unittests" temporary="true" nameIsGenerated="true">
       <module name="mathematics" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -95,21 +86,7 @@
       <option name="_new_targetType" value="&quot;PYTHON&quot;" />
       <method v="2" />
     </configuration>
-    <configuration name="Unittests in test_hold_list.py" type="tests" factoryName="Unittests" temporary="true" nameIsGenerated="true">
-      <module name="mathematics" />
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/mathematics/tests" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="_new_additionalArguments" value="&quot;&quot;" />
-      <option name="_new_target" value="&quot;$PROJECT_DIR$/mathematics/tests/test_hold_list.py&quot;" />
-      <option name="_new_targetType" value="&quot;PATH&quot;" />
-      <method v="2" />
-    </configuration>
-    <configuration name="Unittests in test_number.py" type="tests" factoryName="Unittests" temporary="true" nameIsGenerated="true">
+    <configuration name="Unittests in D:/Documents/Programming/GitHub/mathematics/mathematics/algebra/tests/test_number.py" type="tests" factoryName="Unittests" temporary="true" nameIsGenerated="true">
       <module name="mathematics" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -123,27 +100,43 @@
       <option name="_new_targetType" value="&quot;PATH&quot;" />
       <method v="2" />
     </configuration>
-    <configuration name="Unittests in test_number_theory.py" type="tests" factoryName="Unittests" temporary="true" nameIsGenerated="true">
+    <configuration name="Unittests in D:/Documents/Programming/GitHub/mathematics/mathematics/tests/test_hold_list.py" type="tests" factoryName="Unittests" temporary="true" nameIsGenerated="true">
       <module name="mathematics" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
       <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/mathematics/number_theory/tests" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/mathematics/tests" />
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <option name="_new_additionalArguments" value="&quot;&quot;" />
-      <option name="_new_target" value="&quot;$PROJECT_DIR$/mathematics/number_theory/tests/test_number_theory.py&quot;" />
+      <option name="_new_target" value="&quot;$PROJECT_DIR$/mathematics/tests/test_hold_list.py&quot;" />
       <option name="_new_targetType" value="&quot;PATH&quot;" />
+      <method v="2" />
+    </configuration>
+    <configuration name="pytest for test_init.test_imaginary_add" type="tests" factoryName="py.test" temporary="true" nameIsGenerated="true">
+      <module name="mathematics" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/tests/test_algebra" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="_new_keywords" value="&quot;&quot;" />
+      <option name="_new_parameters" value="&quot;&quot;" />
+      <option name="_new_additionalArguments" value="&quot;&quot;" />
+      <option name="_new_target" value="&quot;test_init.test_imaginary_add&quot;" />
+      <option name="_new_targetType" value="&quot;PYTHON&quot;" />
       <method v="2" />
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Python tests.pytest for test_init.test_imaginary_add" />
         <item itemvalue="Python tests.Unittests for test_init.TestProbability" />
-        <item itemvalue="Python tests.Unittests in test_number.py" />
-        <item itemvalue="Python tests.Unittests in test_hold_list.py" />
+        <item itemvalue="Python tests.Unittests in D:/Documents/Programming/GitHub/mathematics/mathematics/algebra/tests/test_number.py" />
+        <item itemvalue="Python tests.Unittests in D:/Documents/Programming/GitHub/mathematics/mathematics/tests/test_hold_list.py" />
         <item itemvalue="Python tests.Unittests for test_hold_list.TestHoldList" />
-        <item itemvalue="Python tests.Unittests in test_number_theory.py" />
       </list>
     </recent_temporary>
   </component>
