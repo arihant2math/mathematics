@@ -8,11 +8,20 @@ class Imaginary:
     """
 
     def __init__(self, num):
-        num = str(num).lower().replace(" ", "").split("+")
-        if "i" in num[0]:
+        num = str(num).lower().replace(" ", "")
+        num = num.split("+")
+        if len(num) == 1:
+            self.imaginary_part = 0
+            if "i" not in num[0]:
+                self.real_part = Number(num[0])
+                self.imaginary_part = 0
+            else:
+                self.real_part = 0
+                self.imaginary_part = Number((num[0]).replace("i", ""))
+        elif "i" in num[0]:
             self.imaginary_part = Number((num[0]).replace("i", ""))
             self.real_part = Number(num[1])
-        else:
+        elif "i" in num[1]:
             self.imaginary_part = Number((num[1]).replace("i", ""))
             self.real_part = Number(num[0])
 
@@ -36,7 +45,7 @@ class Imaginary:
 
     def __mul__(self, other):
         real = (self.real_part * other.real_part) - (
-                self.imaginary_part * other.real_part
+                self.imaginary_part * other.imaginary_part
         )
         imaginary = (self.imaginary_part * other.real_part) + (
                 self.real_part * other.imaginary_part
@@ -84,8 +93,15 @@ class Imaginary:
         formats an imaginary number into mathematical format.
         :return: str
         """
-        real = self.real_part
-        imaginary = self.imaginary_part
+        real = str(self.real_part)
+        imaginary = str(self.imaginary_part)
+
+        if real == "0":
+            real = ""
+
+        if imaginary == "0":
+            imaginary = ""
+
         if not latex:
             ans = str(real) + "+" + str(imaginary) + "i"
         elif latex:

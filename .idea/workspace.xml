@@ -1,16 +1,26 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="BuildServerSettings">
+    <treeState key="project">
+      <selectedPath>
+        <pathElement>
+          <option name="myNodeId" value="helperText" />
+          <option name="myNodeType" value="jetbrains.buildServer.tree.descriptors.LinkedTextDescriptor" />
+        </pathElement>
+      </selectedPath>
+    </treeState>
+  </component>
   <component name="ChangeListManager">
     <list default="true" id="594d2981-ca8f-4742-8cf8-fc8411ac8685" name="Default Changelist" comment="Reformated the package&#10;&#10;added testcases&#10;&#10;added _hold_list.py to help with grow_lists.py, might not make it to the 0.0.0 release">
-      <change afterPath="$PROJECT_DIR$/mathematics/algebra/Imaginary.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/tests/test_algebra/test_number.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/INSTALL.md" beforeDir="false" afterPath="$PROJECT_DIR$/INSTALL.md" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/docs/algebra.rst" beforeDir="false" afterPath="$PROJECT_DIR$/docs/algebra.rst" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/installation.rst" beforeDir="false" afterPath="$PROJECT_DIR$/docs/installation.rst" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mathematics/algebra/Number.py" beforeDir="false" afterPath="$PROJECT_DIR$/mathematics/algebra/Number.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mathematics/algebra/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/mathematics/algebra/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/test_algebra/test_init.py" beforeDir="false" afterPath="$PROJECT_DIR$/tests/test_algebra/test_imaginary.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mathematics/algebra/Imaginary.py" beforeDir="false" afterPath="$PROJECT_DIR$/mathematics/algebra/Imaginary.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mathematics/algebra/linear_algebra/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/mathematics/algebra/linear_algebra/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mathematics/number_theory/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/mathematics/number_theory/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/test_algebra/test_imaginary.py" beforeDir="false" afterPath="$PROJECT_DIR$/tests/test_algebra/test_imaginary.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -46,6 +56,7 @@
   </component>
   <component name="PropertiesComponent">
     <property name="ASKED_SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
+    <property name="NEW_TOOLWINDOW_STRIPE_DEFAULTS" value="true" />
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
@@ -274,7 +285,6 @@
         </entry>
       </map>
     </option>
-    <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="added unit tests and new functions" />

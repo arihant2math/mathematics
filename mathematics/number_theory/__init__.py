@@ -256,7 +256,7 @@ def primitive_root_table_multiplication(modulus):
                         z = var
                     var = ""
                 else:
-                    var = var + item
+                    var += item
             new_key = (
                 "$" + str(w) + "^" + str(x) + "\\cdot" + str(y) + "^" + str(z) + "$"
             )
