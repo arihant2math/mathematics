@@ -105,8 +105,8 @@ def multiset_p(multiset_of_strings):
         if element not in elements:
             elements.append(element)
             count_of_element = multiset_of_strings.count(element)
-            den *= factorial(count_of_element)
-    num = factorial(len([ed for ed in multiset_of_strings]))
+            den *= math.factorial(count_of_element)
+    num = math.factorial(len([ed for ed in multiset_of_strings]))
     return num / den
 
 
