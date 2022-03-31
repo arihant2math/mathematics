@@ -1,4 +1,3 @@
-from mathematics.counting.function import Function
 import itertools
 from math import *
 
@@ -111,9 +110,8 @@ def multiset_p(multiset_of_strings):
     return num / den
 
 
-def sigma(oper, start, stop):
+def sigma(func, start, stop):
     ans = 0
     for i in range(start, stop + 1):
-        func = Function(oper)
-        ans = ans + func.solve(i)
+        ans = ans + func(i)
     return ans
