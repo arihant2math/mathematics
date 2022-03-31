@@ -1,1 +1,1 @@
-import variable
+import mathematics.algebra.variable
