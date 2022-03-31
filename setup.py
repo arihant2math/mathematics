@@ -1,7 +1,7 @@
 import setuptools
 
-with open("README.md", "r", encoding="utf-8") as fh:
-    long_description = fh.read()
+with open("README.md", "r", encoding="utf-8") as readme:
+    long_description = readme.read()
 
 setuptools.setup(
     name="mathematics-package",
