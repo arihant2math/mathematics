@@ -1,11 +1,11 @@
 import itertools
-from math import *
+import math
 
 
 def totient(m, print_units=False):
     units = []
     for i in range(1, m):
-        if gcd(i, m) == 1:
+        if math.gcd(i, m) == 1:
             units.append(i)
     ans = len(units)
     if not print_units:
@@ -34,14 +34,14 @@ def partition(n):
 
 
 def combination(n, k):
-    num = factorial(n)
-    den = factorial(n - k) * factorial(k)
+    num = math.factorial(n)
+    den = math.factorial(n - k) * math.factorial(k)
     return num / den
 
 
 def permutation(n, k):
-    num = factorial(n)
-    den = factorial(n - k)
+    num = math.factorial(n)
+    den = math.factorial(n - k)
     return num / den
 
 
