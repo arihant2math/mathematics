@@ -1,17 +1,17 @@
 import itertools
 import math
+from mathematics import product
 
-
-def totient(m, print_units=False):
-    units = []
-    for i in range(1, m):
-        if math.gcd(i, m) == 1:
-            units.append(i)
-    ans = len(units)
-    if not print_units:
-        return ans
-    else:
-        return ans, units
+def totient(m):
+	"""The euler totient function returns the number of positive integers less than or equal to m that are relatively prime to m.
+	:return: The number of positive integers less than or equal to m that are relatively prime to m.
+	"""
+	units = []
+	for i in range(2, m + 1):
+		if math.gcd(i, m) == 1:
+			units.append(i)
+	ans = len(units)
+	return ans
 
 
 def partition(n):
@@ -34,15 +34,15 @@ def partition(n):
 
 
 def combination(n, k):
-    num = math.factorial(n)
-    den = math.factorial(n - k) * math.factorial(k)
-    return num / den
+	num = math.factorial(n)
+	den = math.factorial(n - k) * math.factorial(k)
+	return num / den
 
 
 def permutation(n, k):
-    num = math.factorial(n)
-    den = math.factorial(n - k)
-    return num / den
+	num = math.factorial(n)
+	den = math.factorial(n - k)
+	return num / den
 
 
 def generate_combinations(string, r):
@@ -99,26 +99,15 @@ def generate_cyclic_permutations(string):
 
 
 def multiset_p(multiset_of_strings):
-    den = 1
-    elements = []
-    for element in multiset_of_strings:
-        if element not in elements:
-            elements.append(element)
-            count_of_element = multiset_of_strings.count(element)
-            den *= math.factorial(count_of_element)
-    num = math.factorial(len([ed for ed in multiset_of_strings]))
-    return num / den
+	den = 1
+	elements = []
+	for element in multiset_of_strings:
+		if element not in elements:
+			elements.append(element)
+			count_of_element = multiset_of_strings.count(element)
+			den *= math.factorial(count_of_element)
+	num = math.factorial(len([ed for ed in multiset_of_strings]))
+	return num / den
 
 
-def sigma(func, start, stop):
-	ans = 0
-	for i in range(start, stop + 1):
-		ans += func(i)
-	return ans
 
-
-def pi(func, start, stop):
-	ans = 0
-	for i in range(start, stop + 1):
-		ans *= func(i)
-	return ans
