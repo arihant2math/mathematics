@@ -1,23 +1,28 @@
 import platform
 from os import getlogin
+from os.path import exists
 
 import setuptools
 
-VERSION = "0.0.0a1.dev202241"
 
-primes = "2, 3, 5, 7, 11, 13, 17"
+MAJOR_VERSION = 0
+MINOR_VERSION = 0
+PATCH = 0
+VERSION = str(MAJOR_VERSION) + str(MINOR_VERSION) + str(PATCH) + "a1.dev202244"
+FILE_VERSION = ""
+primes = [2, 3, 5, 7, 11, 13, 17]
 
 if platform.system() == "Windows":
-	path = "C:/Users/" + str(getlogin()) + "/AppData/Local/Temp/mathematics-python/" + VERSION + "/"
+	path = "C:/Users/" + str(getlogin()) + "/AppData/Local/Temp/mathematics-python/"
 elif platform.system() == "Darwin":
-	path = "~/Library/Application Support/mathematics-python/" + VERSION + "/"
+	path = "~/Library/Application Support/mathematics-python/"
 elif platform.system() == "Linux":
-	path = "~/.mathematics-python/" + VERSION + "/"
+	path = "~/.mathematics-python/"
 else:
 	path = ""
-# f = open(path + "primes" + ".list", "w+")
-# f.write(primes)
-# f.close()
+# if not exists(path + "primes.list"):
+# 	with open(path + "primes.list", "x") as primes_file:
+# 		primes_file.write(str(primes))
 
 with open("README.md", "r", encoding="utf-8") as readme:
 	long_description = readme.read()
@@ -38,6 +43,7 @@ setuptools.setup(
 		"License :: OSI Approved :: MIT License",
 		"Operating System :: OS Independent",
 		"Natural Language :: English",
+		"Intended Audience :: Developers"
 	],
 	python_requires=">=3.8",
 	requires=["numpy", "matplotlib"],

@@ -24,9 +24,7 @@ class HoldList:
 				self.path = "~/.mathematics-python/" + mathematics.VERSION + "/"
 			else:
 				self.path = ""
-			f = open(self.path + self.file_name + ".list", "r")
-			self.hold = f.read()
-			f.close()
+			self.read()
 		except FileNotFoundError:
 			self.hold = ""
 			self.save()
@@ -39,8 +37,9 @@ class HoldList:
 
 	def save(self):
 		"""Saves hold"""
+		to_write = str(self.hold).replace(" ", "")
 		f = open(self.path + self.file_name + ".list", "w")
-		f.write(str(self.hold)[1: len(self.hold) - 2])
+		f.write(to_write[1: len(to_write) - 2])
 		f.close()
 
 	def read(self):
@@ -48,10 +47,13 @@ class HoldList:
 		Returns the contents of the file
 		:return:
 		"""
-		f = open(self.path + self.file_name + ".list", "r")
-		contents = f.read().split(", ")
-		f.close()
-		return contents
+		self._read()
+		return self.hold
 
 	def modify(self, new):
 		self.hold = new
+
+	def _read(self):
+		f = open(self.path + self.file_name + ".list", "r")
+		self.hold = f.read().split(",")
+		f.close()
