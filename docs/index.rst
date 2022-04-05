@@ -16,4 +16,5 @@ User's Guide
    counting
    number_theory
    probability
+   api
 

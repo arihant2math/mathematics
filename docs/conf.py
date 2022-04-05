@@ -33,7 +33,6 @@ version = '0.0'
 extensions = [
 	"sphinx.ext.autodoc",
 	"sphinx.ext.intersphinx",
-	"sphinxcontrib.log_cabinet",
 	"pallets_sphinx_themes",
 	"sphinx_issues",
 	"sphinx_tabs.tabs"
