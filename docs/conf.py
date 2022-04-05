@@ -80,6 +80,6 @@ html_theme_options = {
 # EPUB options
 epub_show_urls = 'footnote'
 
-needs_sphinx = '5.0'
+needs_sphinx = '4.0'
 
 # LaTeX options
