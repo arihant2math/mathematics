@@ -1,4 +1,4 @@
-from mathematics import pi, sigma
+from mathematics import pi_function as pi, sigma_function as sigma
 
 
 def test_sigma():
