@@ -1,124 +1,81 @@
+from mathematics import number_theory
 import math
 import itertools
 
 
-# Prime stuff
+def test_is_prime_wilsons_theorem():
+    assert not number_theory.is_prime_wilsons_theorem(1)
+    assert number_theory.is_prime_wilsons_theorem(2)
+    assert number_theory.is_prime_wilsons_theorem(3)
+    assert not number_theory.is_prime_wilsons_theorem(4)
+    assert number_theory.is_prime_wilsons_theorem(5)
+    assert not number_theory.is_prime_wilsons_theorem(10)
+    assert number_theory.is_prime_wilsons_theorem(11)
+    assert not number_theory.is_prime_wilsons_theorem(93)
 
 
-def is_prime_wilsons_theorem(num):
-    """Check for primality using wilsons theorem"""
-    if num == 1 or num == 0:
-        return False
-    if num < 0:
-        return False
-    num = num
-    return math.factorial(num - 1) % num == num - 1
+def test_is_prime_fermat_little_theorem():
+    assert not number_theory.is_prime_fermat_little_theorem(1)
+    assert number_theory.is_prime_fermat_little_theorem(2)
+    assert number_theory.is_prime_fermat_little_theorem(3)
+    assert not number_theory.is_prime_fermat_little_theorem(4)
+    assert number_theory.is_prime_fermat_little_theorem(5)
+    assert not number_theory.is_prime_fermat_little_theorem(10)
+    assert number_theory.is_prime_fermat_little_theorem(11)
+    assert not number_theory.is_prime_fermat_little_theorem(93)
 
 
-def is_prime_fermat_little_theorem(num):
-    """Check for primality using fermats little theorem, faster than wilsons theorem for larger numbers"""
-    if num == 1 or num == 0:
-        return False
-    return all(i ** (num - 1) % num == 1 for i in range(2, num))
+def test_is_prime():
+    assert not number_theory.is_prime(1)
+    assert number_theory.is_prime(2)
+    assert number_theory.is_prime(3)
+    assert not number_theory.is_prime(4)
+    assert number_theory.is_prime(5)
+    assert not number_theory.is_prime(10)
+    assert number_theory.is_prime(11)
+    assert not number_theory.is_prime(93)
 
 
-def is_prime(num):
-    """Checks if the number is prime using fermats little theorem if the number is greater that 1000"""
-    if num == 1 or num == 0:
-        return False
-    if num < 0:
-        return False
-    if num > 1000:
-        return all(i ** (num - 1) % num == 1 for i in range(2, num))
-    n = abs(num)
-    return math.factorial(n - 1) % n == n - 1
+def test_prime_gen():
+    assert number_theory.prime_gen(100) == number_theory.prime_gen(0, 100)
 
 
-def prime_gen(start, stop=None):
-    """Generates primes from start=>stop"""
-    if stop is None:
-        stop = start
-        start = 0
-    ans = []
-    for i in range(start, stop):
-        if is_prime(i):
-            ans.append(i)
-    return ans
+def test_mersenne():
+    assert number_theory.mersenne(3) == 7
+    assert number_theory.mersenne(5) == 31
 
 
-def mersenne(n):
-    """
-    Returns the mersenne of the number ((2**n)-1)
-    :param n:
-    :return:
-    """
-    return (2**n) - 1
-
-
-def lucas_lehmer(m):
-    """Implements Lucas Lehmer mersenne prime test."""
-    lucas_lehmer_list = [4]
-    if len(lucas_lehmer_list) < m:
-        for num in range(m - 1):
-            lucas_lehmer_list.append(lucas_lehmer_list[-1] ** 2 - 2)
-            print(lucas_lehmer_list)
-    if lucas_lehmer_list[m - 1] == 0:
-        return True
-    else:
-        return False
+# def test_lucas_lehmer():
+#     assert lucas_lehmer(7)
+#     assert lucas_lehmer(31)
 
 
 def lucas_lehmer_gen(start, stop):
     answer = []
     for i in range(start, stop + 1):
-        if lucas_lehmer(i):
-            print(lucas_lehmer((i**2) - 1))
+        if number_theory.lucas_lehmer(i):
+            print(number_theory.lucas_lehmer((i**2) - 1))
             answer.append((i**2) - 1)
     return answer
 
 
-def prime_factor(number):
-    if number == 1:
-        return [1]
-    ans = []
-    for i in range(2, number + 1):
-        if is_prime(i):
-            while number % i == 0:
-                if number % i == 0:
-                    ans.append(i)
-                    number = int(number / i)
-    return ans
+def test_prime_factor():
+    assert number_theory.prime_factor(1) == [1]
+    assert number_theory.prime_factor(11) == [11]
+    assert number_theory.prime_factor(100) == [2, 2, 5, 5]
 
 
-def factors(number):
-    return [i for i in range(1, number + 1) if not number % i]
+def test_factor():
+    assert number_theory.factors(1) == [1]
+    assert number_theory.factors(10) == [1, 2, 5, 10]
+    assert number_theory.factors(20) == [1, 2, 4, 5, 10, 20]
+    assert number_theory.factors(22) == [1, 2, 11, 22]
+    assert number_theory.factors(100) == [1, 2, 4, 5, 10, 20, 25, 50, 100]
 
 
-def step_in_euclidean_algorithm(a, b):
-    x, y = divmod(a, b)
-    return a, b, x, y
-
-
-def euclidean_algorithm(a, b, want_fancy=False):
-    li = step_in_euclidean_algorithm(a, b)
-    while li[3] != 0:
-        li = step_in_euclidean_algorithm(li[1], li[3])
-    if want_fancy:
-        return (
-            str(li[0]) + " = " + str(li[1]) + "(" + str(li[2]) + ")" + "+" + str(li[3])
-        )
-    else:
-        return li
-
-
-# def extended_euclidean_algorithm():
-#     # should have param number
-#     return NotImplemented
-
-
-def lcm(m, n):
-    result = m * n / math.gcd(m, n)
-    return result
+def test_lcm():
+    assert number_theory.lcm(10, 5) == 10
+    assert number_theory.lcm(14, 20) == 140
 
 
 def totient_function(m, print_units):

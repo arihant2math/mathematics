@@ -3,6 +3,8 @@ import statistics
 from mathematics import number_theory
 import math
 
+from mathematics.number_theory import primitive_root
+
 
 def partial_sum_for_half_plus_fourth(n):
     result = 0

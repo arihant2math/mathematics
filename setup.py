@@ -1,6 +1,5 @@
 import platform
 from os import getlogin
-from os.path import exists
 
 import setuptools
 

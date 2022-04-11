@@ -17,6 +17,6 @@ def data(data_list):
     }
 
 
-def plot_data(l):
-    to_plot = data(l)
+def plot_data(data_list):
+    to_plot = data(data_list)
     plt.plot(to_plot)
