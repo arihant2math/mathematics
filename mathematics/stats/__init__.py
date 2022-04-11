@@ -1,4 +1,5 @@
 from statistics import mean, mode, variance, stdev, quantiles
+import numpy as np
 from matplotlib import pyplot as plt
 
 
@@ -17,6 +18,11 @@ def data(data_list):
     }
 
 
-def plot_data(data_list):
-    to_plot = data(data_list)
-    plt.plot(to_plot)
+def plot_data(data_list, title="Stats"):
+    fig1, ax1 = plt.subplots()
+    ax1.set_title(title)
+    ax1.boxplot(data_list)
+    plt.show()
+
+
+plot_data([5, 7, 7, 7, 8, 8, 8, 8, 8, 9, 9, 9, 10, 15])
