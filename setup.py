@@ -13,38 +13,38 @@ FILE_VERSION = ""
 primes = [2, 3, 5, 7, 11, 13, 17]
 
 if platform.system() == "Windows":
-	path = "C:/Users/" + str(getlogin()) + "/AppData/Local/Temp/mathematics-python/"
+    path = "C:/Users/" + str(getlogin()) + "/AppData/Local/Temp/mathematics-python/"
 elif platform.system() == "Darwin":
-	path = "~/Library/Application Support/mathematics-python/"
+    path = "~/Library/Application Support/mathematics-python/"
 elif platform.system() == "Linux":
-	path = "~/.mathematics-python/"
+    path = "~/.mathematics-python/"
 else:
-	path = ""
+    path = ""
 # if not exists(path + "primes.list"):
 # 	with open(path + "primes.list", "x") as primes_file:
 # 		primes_file.write(str(primes))
 
 with open("README.md", "r", encoding="utf-8") as readme:
-	long_description = readme.read()
+    long_description = readme.read()
 
 setuptools.setup(
-	name="mathematics",
-	version=VERSION,
-	author="Ashwin Naren",
-	author_email="arihant2math@gmail.com",
-	description="A package with mathematical functions",
-	long_description=long_description,
-	long_description_content_type="text/markdown",
-	url="https://github.com/arihant2math/mathemathics",
-	packages=["mathematics"],
-	classifiers=[
-		"Development Status :: 3 - Alpha",
-		"Programming Language :: Python :: 3",
-		"License :: OSI Approved :: MIT License",
-		"Operating System :: OS Independent",
-		"Natural Language :: English",
-		"Intended Audience :: Developers"
-	],
-	python_requires=">=3.8",
-	requires=["numpy", "matplotlib"],
+    name="mathematics",
+    version=VERSION,
+    author="Ashwin Naren",
+    author_email="arihant2math@gmail.com",
+    description="A package with mathematical functions",
+    long_description=long_description,
+    long_description_content_type="text/markdown",
+    url="https://github.com/arihant2math/mathemathics",
+    packages=["mathematics"],
+    classifiers=[
+        "Development Status :: 3 - Alpha",
+        "Programming Language :: Python :: 3",
+        "License :: OSI Approved :: MIT License",
+        "Operating System :: OS Independent",
+        "Natural Language :: English",
+        "Intended Audience :: Developers",
+    ],
+    python_requires=">=3.8",
+    requires=["numpy", "matplotlib"],
 )

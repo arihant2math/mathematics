@@ -10,10 +10,10 @@ class Variable:
                     raise ValueError("Invalid variable name, must be one letter")
                 self.name = char
 
-        if var-self.name == "":
+        if var - self.name == "":
             self.coefficient = 1
         else:
-            self.coefficient = int(var-self.name)
+            self.coefficient = int(var - self.name)
 
     def __str__(self):
         if self.coefficient == 1:
