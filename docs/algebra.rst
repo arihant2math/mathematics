@@ -1,3 +1,8 @@
 Algebra
 ================
-There is Fraction.py, Imaginary.py, and Number.py.
+Variable
+---------------------
+
+.. code-block:: python
+
+    from mathematics.algebra import variable
