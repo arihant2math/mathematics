@@ -1,3 +1,4 @@
+import itertools
 import statistics
 from mathematics import number_theory
 import math
