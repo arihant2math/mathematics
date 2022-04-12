@@ -1,13 +1,14 @@
 import platform
-from os import getlogin
-
-import setuptools
-
+from os import getlogin, popen
+try:
+    from setuptools import setup
+except ImportError:
+    from distutils.core import setup
 
 MAJOR_VERSION = 0
 MINOR_VERSION = 0
 PATCH = 0
-VERSION = str(MAJOR_VERSION) + str(MINOR_VERSION) + str(PATCH) + "a1.dev2022411"
+VERSION = str(MAJOR_VERSION) + "." + str(MINOR_VERSION) + "." + str(PATCH) + "a1.dev2022411.2"
 FILE_VERSION = ""
 primes = [2, 3, 5, 7, 11, 13, 17]
 
@@ -26,7 +27,11 @@ else:
 with open("README.md", "r", encoding="utf-8") as readme:
     long_description = readme.read()
 
-setuptools.setup(
+stream = popen('echo Returned output')
+output = stream.read()
+print(output)
+
+setup(
     name="mathematics",
     version=VERSION,
     author="Ashwin Naren",
