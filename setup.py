@@ -7,7 +7,7 @@ import setuptools
 MAJOR_VERSION = 0
 MINOR_VERSION = 0
 PATCH = 0
-VERSION = str(MAJOR_VERSION) + str(MINOR_VERSION) + str(PATCH) + "a1.dev2022411"
+VERSION = str(MAJOR_VERSION) + str(MINOR_VERSION) + str(PATCH) + "a0.dev20224291"
 FILE_VERSION = ""
 primes = [2, 3, 5, 7, 11, 13, 17]
 
