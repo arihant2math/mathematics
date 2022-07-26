@@ -78,17 +78,13 @@ def test_lcm():
     assert number_theory.lcm(14, 20) == 140
 
 
-def totient_function(m, print_units):
-    units = [i for i in range(1, m + 1) if math.gcd(i, m) == 1]
-    ans = len(units)
-    if print_units:
-        return ans, units
-    else:
-        return ans
+def test_totient_function():
+    assert number_theory.totient_function(1) == 1
+    assert number_theory.totient_function(5) == 4
+    assert number_theory.totient_function(9) == 6
 
-
-def nth_power(stop, power):
-    return [i**power for i in range(1, stop + 1)]
+def test_nth_power():
+    assert number_theory.nth_power(3,3) == 1
 
 
 def pascal_triangle(n, k):
