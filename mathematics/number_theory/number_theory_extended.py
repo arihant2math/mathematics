@@ -61,7 +61,7 @@ def pattern_mod_n_adding(n, mod):
     return ans
 
 
-def pattern_mod_n_multipling(number, mod):
+def pattern_mod_n_multiplying(number, mod):
     x = number % mod
     result = []
     actual = x * x
@@ -71,11 +71,11 @@ def pattern_mod_n_multipling(number, mod):
     return result
 
 
-def pattern_mod_n_multipling_gen(end, start_1, start_2):
+def pattern_mod_n_multiplying_gen(end, start_1, start_2):
     lengths = []
     for i in range(start_1, end):
         for dictionary in range(start_2, i):
-            pattern_mod_n_multipling(dictionary, i)
+            pattern_mod_n_multiplying(dictionary, i)
             z = int(len(pattern_mod_n_adding(dictionary, i)))
             lengths.append(z)
     return lengths
@@ -104,10 +104,10 @@ def pattern_mod_n_analytics_v1(
         first = pattern_mod_n_adding_gen(end_1, start_1_1, start_2_1)
         last = pattern_mod_n_adding_gen(end_2, start_1_2, start_2_2)
     elif "multiplication" in the_function:
-        first = pattern_mod_n_multipling_gen(end_1, start_1_1, start_2_1)
-        last = pattern_mod_n_multipling_gen(end_2, start_1_2, start_2_2)
+        first = pattern_mod_n_multiplying_gen(end_1, start_1_1, start_2_1)
+        last = pattern_mod_n_multiplying_gen(end_2, start_1_2, start_2_2)
     for key in first:
-        print(key + str(float(last[key]) - float(first[key])))
+        print(str(key) + str(float(last[key]) - float(first[key])))
 
 
 def addition_sums_mod_n(n):
@@ -164,7 +164,7 @@ def pattern_mod_n_adding_gen_primes(end, start_1, start_2):
 def prime_mult(n):
     result = 1
     for i in range(2, n):
-        result = result * i
+        result *= i
     result = result % n
     print(result)
 
@@ -192,9 +192,9 @@ def totient_function_for_1_number(mod):
 
 
 def squares_mod_m(stop, m):
-    begining = number_theory.nth_power(stop, 2)
+    beginning = number_theory.nth_power(stop, 2)
     ans = []
-    for item in begining:
+    for item in beginning:
         number = int(item) % m
         ans.append(number)
     return ans
@@ -218,12 +218,12 @@ def distance(mod, number):
         count = 2
         cont = True
         while cont:
-            if (number**count) % mod != number:
-                ans.append((number**count) % mod)
+            if (number ** count) % mod != number:
+                ans.append((number ** count) % mod)
             else:
                 cont = False
                 return ans
-            count = count + 1
+            count += 1
     else:
         pass
 
@@ -253,71 +253,3 @@ def sum_set(set_a, set_b):
     sum_a_b = set(sum_a_b)
     return sum_a_b
 
-
-def primitive_root_table_multiplication(modulus):
-    modulus = int(modulus)
-    name = "primitive_root_table" + str(modulus) + ".tex"
-    file = open(name, "w")
-    file.write(
-        "\\documentclass{article}\n"
-        + "\\usepackage[utf8]{inputenc}\n"
-        + "\\begin{document}\n"
-        + "\\begin{tabular}{|c|c|}\n"
-        + "number & primitive root equivalent \\ \n"
-    )
-    primitive_roots = primitive_root(modulus)
-    two_gens = False
-    list_of_numbers = {}
-    if "," in str(primitive_roots):
-        two_gens = True
-    if two_gens:
-        for w, x, y, z in itertools.product(range(1, modulus, 2), repeat=4):
-            if pow(int(w), int(x)) * pow(y, z) % int(modulus) not in list_of_numbers:
-                list_of_numbers.update(
-                    {
-                        str(w)
-                        + " "
-                        + str(x)
-                        + " "
-                        + str(y)
-                        + " "
-                        + str(z): (pow(w, x) * pow(y, z))
-                    }
-                )
-        for key in list_of_numbers:
-            w = x = y = z = 0
-            var = ""
-            for item in key:
-                if item == " ":
-                    if w == 0:
-                        w = var
-                    elif x == 0:
-                        x = var
-                    elif y == 0:
-                        y = var
-                    elif z == 0:
-                        z = var
-                    var = ""
-                else:
-                    var += item
-            new_key = (
-                "$" + str(w) + "^" + str(x) + "\\cdot" + str(y) + "^" + str(z) + "$"
-            )
-            line = (
-                new_key
-                + " & "
-                + "$"
-                + str(modulus)
-                + "^"
-                + str(list_of_numbers[key])
-                + "$"
-            )
-            line = line + "\\ " + "\n"
-            file.write(line)
-    else:
-        for i in range(1, modulus):
-            list_of_numbers.update(
-                {"$" + str(i) + "$": "$" + str(primitive_roots) + "^" + str(i) + "$"}
-            )
-    file.write("\\end{tabular}\n" + "\\end{document}\n")
-    file.close()
