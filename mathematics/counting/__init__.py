@@ -14,26 +14,6 @@ def totient(m):
     ans = len(units)
     return ans
 
-
-def partition(n):
-    partitions = []
-    le = ""
-    for i in range(1, n + 1):
-        le += str(i)
-    for i in range(1, n + 1):
-        for element in itertools.product(le, repeat=i):
-            z = 0
-            for character in element:
-                z += int(character)
-            if z == n:
-                new_part = []
-                for item in element:
-                    new_part.append(int(item))
-                if sorted(new_part) not in partitions:
-                    partitions.append(new_part)
-    return partitions
-
-
 def combination(n, k):
     num = math.factorial(n)
     den = math.factorial(n - k) * math.factorial(k)

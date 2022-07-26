@@ -121,10 +121,10 @@ def lcm(m, n):
     return result
 
 
-def totient_function(m, print_units):
+def totient_function(m, return_units=False):
     units = [i for i in range(1, m + 1) if math.gcd(i, m) == 1]
     ans = len(units)
-    if print_units:
+    if return_units:
         return ans, units
     else:
         return ans
