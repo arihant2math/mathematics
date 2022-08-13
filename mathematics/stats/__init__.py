@@ -1,13 +1,28 @@
-from statistics import *
+from statistics import mean, mode, variance, stdev, quantiles
+import numpy as np
 from matplotlib import pyplot as plt
 
 
-def data(l):
-	quantiles_l = quantiles(l)
-	return {"mean": mean(l), "median": quantiles_l[1], "mode": mode(l), "variance": variance(l), "stdev": stdev(l),
-			"first_quartile": quantiles_l[0], "third_quartile": quantiles_l[2], "min": min(l), "max": max(l)}
+def data(data_list):
+    quantiles_l = quantiles(data_list)
+    return {
+        "mean": mean(data_list),
+        "median": quantiles_l[1],
+        "mode": mode(data_list),
+        "variance": variance(data_list),
+        "stdev": stdev(data_list),
+        "first_quartile": quantiles_l[0],
+        "third_quartile": quantiles_l[2],
+        "min": min(data_list),
+        "max": max(data_list),
+    }
 
 
-def plot_data(l):
-	to_plot = data(l)
-	plt.plot(to_plot)
+def plot_data(data_list, title="Stats"):
+    fig1, ax1 = plt.subplots()
+    ax1.set_title(title)
+    ax1.boxplot(data_list)
+    plt.show()
+
+
+plot_data([5, 7, 7, 7, 8, 8, 8, 8, 8, 9, 9, 9, 10, 15])

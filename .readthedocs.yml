@@ -8,12 +8,8 @@ build:
 python:
   install:
     - requirements: docs/requirements.txt
-    - method: pip
-      path: .
 
 sphinx:
-  builder: dirhtml
-  fail_on_warning: true
   configuration: docs/conf.py
 
 

@@ -1,5 +1,6 @@
 matplotlib
 numpy
+flake8
 packaging==21.3
-pytest==7.1.1
+pytest==7.1.2
 typing==3.7.4.3
