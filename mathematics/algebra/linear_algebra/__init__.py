@@ -1,1 +1,1 @@
-from mathematics.algebra.linear_algebra import Matrix
+from mathematics.algebra.linear_algebra import matrix
