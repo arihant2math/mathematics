@@ -25,4 +25,3 @@ def plot_data(data_list, title="Stats"):
     plt.show()
 
 
-plot_data([5, 7, 7, 7, 8, 8, 8, 8, 8, 9, 9, 9, 10, 15])

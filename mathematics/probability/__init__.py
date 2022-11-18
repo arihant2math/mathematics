@@ -16,10 +16,11 @@ class Probability:
         )
 
     def complement(self):
+        """Returns the complement of the Probability"""
         v = Fraction(
             numerator=len(self.desired_outcomes), denominator=len(self.all_outcomes)
         )
-        return 1 - v
+        return Fraction(1, 1) - v
 
 
 def are_mutually_exclusive(a, b):

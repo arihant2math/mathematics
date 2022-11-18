@@ -6,5 +6,8 @@ def test_totient():
     assert counting.totient(43) == 41
     assert counting.totient(186) == 59
 
-def test_partition():
-    assert counting.partition(10)
+
+def test_totient_function():
+    assert counting.totient_function(1) == 1
+    assert counting.totient_function(5) == 4
+    assert counting.totient_function(9) == 6

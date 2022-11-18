@@ -1,9 +1,10 @@
 import itertools
 import statistics
+
+import mathematics.counting
+import mathematics.number_theory.primes
 from mathematics import number_theory
 import math
-
-from mathematics.number_theory import primitive_root
 
 
 def partial_sum_for_half_plus_fourth(n):
@@ -11,15 +12,6 @@ def partial_sum_for_half_plus_fourth(n):
     for i in range(1, n + 1):
         result += 1 / i
     return result
-
-
-def lucas_lehmer(p):
-    s = 4
-    m = pow(2, p) - 1
-    for i in range(1, p - 1):
-        s = (pow(s, 2) - 2) % m
-    if s == 0:
-        return True, pow(2, p) - 1
 
 
 # function that returns all primes up to that number.
@@ -40,9 +32,9 @@ def sieve_numbers(num):
 def lucas_lehmer_gen(n):
     answer = []
     for j in range(1, n):
-        if number_theory.is_prime(j):
+        if mathematics.number_theory.primes.is_prime(j):
             if lucas_lehmer(j):
-                print(j, lucas_lehmer(j))
+                print(j, mathematics.lucas_lehmer(j))
                 n = input("Continue?")
                 answer.append(j)
                 if "continue" not in n:
@@ -126,7 +118,7 @@ def addition_sums_mod_n_gen(start, stop):
 def pattern_mod_n_adding_gen_primes(end, start_1, start_2):
     lengths = []
     for mod in range(start_1, end + 1):
-        if number_theory.is_prime(mod):
+        if mathematics.number_theory.primes.is_prime(mod):
             print("mod=" + str(mod) + ":")
             for number in range(start_2, mod):
                 print(
@@ -171,7 +163,7 @@ def prime_mult(n):
 
 def prime_mult_gen(n):
     for i in range(1, n):
-        if number_theory.is_prime(i):
+        if mathematics.number_theory.primes.is_prime(i):
             prime_mult(i)
 
 
@@ -187,7 +179,7 @@ def powers_of_x_plus_1_mod_prime_gen(x, prime, stop_p):
 
 def totient_function_for_1_number(mod):
     for i in range(1, 1000000000):
-        if number_theory.totient_function(i) == mod:
+        if mathematics.counting.totient_function(i) == mod:
             print(i)
 
 

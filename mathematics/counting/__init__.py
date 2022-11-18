@@ -1,4 +1,3 @@
-import itertools
 import math
 
 
@@ -13,6 +12,7 @@ def totient(m):
             units.append(i)
     ans = len(units)
     return ans
+
 
 def combination(n, k):
     num = math.factorial(n)
@@ -89,3 +89,16 @@ def multiset_p(multiset_of_strings):
             den *= math.factorial(count_of_element)
     num = math.factorial(len([ed for ed in multiset_of_strings]))
     return num / den
+
+
+def choose(n, k):
+    return math.comb(n, k)
+
+
+def totient_function(m, return_units=False):
+    units = [i for i in range(1, m + 1) if math.gcd(i, m) == 1]
+    ans = len(units)
+    if return_units:
+        return ans, units
+    else:
+        return ans

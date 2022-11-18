@@ -2,95 +2,8 @@ import math
 import itertools
 
 
-# Prime stuff
-
-
-def is_prime_wilsons_theorem(num):
-    """Check for primality using wilsons theorem"""
-    if num == 1 or num == 0:
-        return False
-    if num < 0:
-        return False
-    num = num
-    return math.factorial(num - 1) % num == num - 1
-
-
-def is_prime_fermat_little_theorem(num):
-    """Check for primality using fermats little theorem, faster than wilsons theorem for larger numbers"""
-    if num == 1 or num == 0:
-        return False
-    return all(i ** (num - 1) % num == 1 for i in range(2, num))
-
-
-def is_prime(num):
-    """Checks if the number is prime using fermats little theorem if the number is greater that 1000"""
-    if num == 1 or num == 0:
-        return False
-    if num < 0:
-        return False
-    if num > 1000:
-        return all(i ** (num - 1) % num == 1 for i in range(2, num))
-    n = abs(num)
-    return math.factorial(n - 1) % n == n - 1
-
-
-def prime_gen(start, stop=None):
-    """Generates primes from start=>stop"""
-    if stop is None:
-        stop = start
-        start = 0
-    ans = []
-    for i in range(start, stop):
-        if is_prime(i):
-            ans.append(i)
-    return ans
-
-
-def mersenne(n):
-    """
-    Returns the mersenne of the number ((2**n)-1)
-    :param n:
-    :return:
-    """
-    return (2**n) - 1
-
-
-def lucas_lehmer(m):
-    """Implements Lucas Lehmer mersenne prime test."""
-    lucas_lehmer_list = [4]
-    if len(lucas_lehmer_list) < m:
-        for num in range(m - 1):
-            lucas_lehmer_list.append(lucas_lehmer_list[-1] ** 2 - 2)
-            print(lucas_lehmer_list)
-    if lucas_lehmer_list[m - 1] == 0:
-        return True
-    else:
-        return False
-
-
-def lucas_lehmer_gen(start, stop):
-    answer = []
-    for i in range(start, stop + 1):
-        if lucas_lehmer(i):
-            print(lucas_lehmer((i**2) - 1))
-            answer.append((i**2) - 1)
-    return answer
-
-
-def prime_factor(number):
-    if number == 1:
-        return [1]
-    ans = []
-    for i in range(2, number + 1):
-        if is_prime(i):
-            while number % i == 0:
-                if number % i == 0:
-                    ans.append(i)
-                    number = int(number / i)
-    return ans
-
-
 def factors(number):
+    """Returns the factors of the number"""
     return [i for i in range(1, number + 1) if not number % i]
 
 
@@ -99,11 +12,11 @@ def step_in_euclidean_algorithm(a, b):
     return a, b, x, y
 
 
-def euclidean_algorithm(a, b, want_fancy=False):
+def euclidean_algorithm(a, b, pretty_print=False):
     li = step_in_euclidean_algorithm(a, b)
     while li[3] != 0:
         li = step_in_euclidean_algorithm(li[1], li[3])
-    if want_fancy:
+    if pretty_print:
         return (
             str(li[0]) + " = " + str(li[1]) + "(" + str(li[2]) + ")" + "+" + str(li[3])
         )
@@ -111,49 +24,24 @@ def euclidean_algorithm(a, b, want_fancy=False):
         return li
 
 
-# def extended_euclidean_algorithm():
-#     # should have param number
-#     return NotImplemented
-
-
-def lcm(m, n):
-    result = m * n / math.gcd(m, n)
-    return result
-
-
-def totient_function(m, return_units=False):
-    units = [i for i in range(1, m + 1) if math.gcd(i, m) == 1]
-    ans = len(units)
-    if return_units:
-        return ans, units
-    else:
-        return ans
+def extended_euclidean_algorithm():
+    # should have param number
+    return NotImplemented
 
 
 def nth_power(stop, power):
     return [i**power for i in range(1, stop + 1)]
 
 
-def pascal_triangle(n, k):
-    return int(((math.factorial(n)) / (math.factorial(n - k) * math.factorial(k))))
-
-
-def pascals_triangle(stop):
-    ans = []
-    for n in range(1, stop + 1):
-        length = []
-        for k in range(0, n + 1):
-            length.append(pascal_triangle(n, k))
-        ans.append(length)
-    return ans
-
-
 def d(n, m):
+    """Checks if n divides m, equivalent to n|m"""
     if (m / n) % 1 == 0:
         return True
+    return False
 
 
 def partition(n):
+    """Returns the partitions of n"""
     partitions = []
     ll = ""
     for i in range(1, n + 1):
@@ -168,9 +56,9 @@ def partition(n):
                 new_part = []
                 for item in element:
                     new_part.append(int(item))
-                if sorted(new_part) not in partitions:
-                    partitions.append(new_part)
-    return partitions
+                if new_part.sort() not in partitions:
+                    partitions.append(new_part.sort())
+    return partitions.sort()
 
 
 def primitive_root(n):
