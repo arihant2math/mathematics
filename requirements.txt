@@ -4,4 +4,3 @@ flake8
 packaging==21.3
 pytest==7.2.0
 typing==3.7.4.3
-more-itertools
