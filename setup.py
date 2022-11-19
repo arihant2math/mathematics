@@ -61,7 +61,7 @@ setuptools.setup(
     description="A package with mathematical functions",
     long_description=long_description,
     long_description_content_type="text/markdown",
-    url="https://github.com/arihant2math/mathematics",
+    url="https://mathematics-package.readthedocs.io/en/latest/",
     packages=["mathematics"],
     classifiers=[
         "Development Status :: 3 - Alpha",
