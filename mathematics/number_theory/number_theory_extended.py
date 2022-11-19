@@ -210,8 +210,8 @@ def distance(mod, number):
         count = 2
         cont = True
         while cont:
-            if (number ** count) % mod != number:
-                ans.append((number ** count) % mod)
+            if (number**count) % mod != number:
+                ans.append((number**count) % mod)
             else:
                 cont = False
                 return ans
@@ -244,4 +244,3 @@ def sum_set(set_a, set_b):
             sum_a_b.append(a + b)
     sum_a_b = set(sum_a_b)
     return sum_a_b
-

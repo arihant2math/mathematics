@@ -7,7 +7,7 @@ MAJOR_VERSION = 0
 MINOR_VERSION = 0
 PATCH = 0
 VERSION = (
-    str(MAJOR_VERSION) + "." + str(MINOR_VERSION) + "." + str(PATCH) + "a0.dev202211172"
+    str(MAJOR_VERSION) + "." + str(MINOR_VERSION) + "." + str(PATCH) + "a0.dev202211181"
 )
 FILE_VERSION = ""
 primes = [
@@ -72,5 +72,5 @@ setuptools.setup(
         "Intended Audience :: Developers",
     ],
     python_requires=">=3.7",
-    requires=["numpy==1.23.4", "matplotlib==3.6.2"],
+    requires=["numpy", "matplotlib"],
 )
