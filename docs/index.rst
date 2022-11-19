@@ -12,6 +12,7 @@ User's Guide
    foreword
    installation
    quickstart
+   algebra
    counting
    number_theory
    probability

@@ -2,6 +2,15 @@ API Reference
 ================
 .. module:: mathematics
 
+Algebra
+__________
+.. automodule:: mathematics.algebra
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+
+
 Counting
 __________
 .. automodule:: mathematics.counting
@@ -15,6 +24,7 @@ Number Theory
    :members:
    :undoc-members:
    :show-inheritance:
+
 number\_theory\_extended
 ----------------------------------------------------------
 

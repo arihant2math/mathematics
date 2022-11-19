@@ -6,9 +6,37 @@ import setuptools
 MAJOR_VERSION = 0
 MINOR_VERSION = 0
 PATCH = 0
-VERSION = str(MAJOR_VERSION) + "." + str(MINOR_VERSION) + "." + str(PATCH) + "a0.dev202211172"
+VERSION = (
+    str(MAJOR_VERSION) + "." + str(MINOR_VERSION) + "." + str(PATCH) + "a0.dev202211172"
+)
 FILE_VERSION = ""
-primes = [2, 3, 5, 7, 11, 13, 17, 19, 23, 29, 31, 37, 41, 43, 47, 53, 59, 61, 67, 71, 73, 79, 83, 89, 97]
+primes = [
+    2,
+    3,
+    5,
+    7,
+    11,
+    13,
+    17,
+    19,
+    23,
+    29,
+    31,
+    37,
+    41,
+    43,
+    47,
+    53,
+    59,
+    61,
+    67,
+    71,
+    73,
+    79,
+    83,
+    89,
+    97,
+]
 
 if platform.system() == "Windows":
     path = "C:/Users/" + str(getlogin()) + ".mathematics/"
@@ -44,5 +72,5 @@ setuptools.setup(
         "Intended Audience :: Developers",
     ],
     python_requires=">=3.7",
-    requires=["numpy", "matplotlib"],
+    requires=["numpy==1.23.4", "matplotlib==3.6.2"],
 )

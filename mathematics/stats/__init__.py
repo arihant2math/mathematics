@@ -3,7 +3,7 @@ import numpy as np
 from matplotlib import pyplot as plt
 
 
-def data(data_list):
+def data(data_list: list) -> dict:
     quantiles_l = quantiles(data_list)
     return {
         "mean": mean(data_list),
@@ -18,10 +18,8 @@ def data(data_list):
     }
 
 
-def plot_data(data_list, title="Stats"):
+def plot_data(data_list: list, title="Stats") -> None:
     fig1, ax1 = plt.subplots()
     ax1.set_title(title)
     ax1.boxplot(data_list)
     plt.show()
-
-

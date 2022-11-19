@@ -1,7 +1,8 @@
 import math
+from fractions import Fraction
 
 
-def totient(m):
+def totient(m: int) -> int:
     """The euler totient function returns the number of positive integers less than or equal to m that are relatively
     prime to m.
     :return: The number of positive integers less than or equal to m that are relatively prime to m.
@@ -14,16 +15,12 @@ def totient(m):
     return ans
 
 
-def combination(n, k):
-    num = math.factorial(n)
-    den = math.factorial(n - k) * math.factorial(k)
-    return num / den
+def combination(n: int, k: int) -> Fraction:
+    return Fraction(math.factorial(n), math.factorial(n - k) * math.factorial(k))
 
 
-def permutation(n, k):
-    num = math.factorial(n)
-    den = math.factorial(n - k)
-    return num / den
+def permutation(n: int, k: int) -> Fraction:
+    return Fraction(math.factorial(n), math.factorial(n - k))
 
 
 def generate_combinations(string, r):
@@ -34,7 +31,7 @@ def generate_combinations(string, r):
     else:
         n = []
         for i in range(0, len(string)):
-            str_removed = string[:i] + string[i + 1:]
+            str_removed = string[:i] + string[i + 1 :]
             comb_next_iteration = generate_combinations(str_removed, r - 1)
             for element in comb_next_iteration:
                 la = string[i] + element
@@ -54,14 +51,14 @@ def generate_permutations(string, r):
     else:
         perms = []
         for i in range(0, len(string)):
-            str_removed = string[:i] + string[i + 1:]
+            str_removed = string[:i] + string[i + 1 :]
             comb_next_iteration = generate_permutations(str_removed, r - 1)
             for element in comb_next_iteration:
                 perms.append(string[i] + element)
     return perms
 
 
-def generate_cyclic_permutations(string):
+def generate_cyclic_permutations(string: str):
     perm_var = generate_permutations(string, len(string))
     cyclic_permutations = []
     for item in perm_var:
@@ -79,7 +76,7 @@ def generate_cyclic_permutations(string):
     return cyclic_permutations
 
 
-def multiset_p(multiset_of_strings):
+def multiset_p(multiset_of_strings: str):
     den = 1
     elements = []
     for element in multiset_of_strings:
@@ -91,11 +88,11 @@ def multiset_p(multiset_of_strings):
     return num / den
 
 
-def choose(n, k):
+def choose(n: int, k: int) -> int:
     return math.comb(n, k)
 
 
-def totient_function(m, return_units=False):
+def totient_function(m: int, return_units=False):
     units = [i for i in range(1, m + 1) if math.gcd(i, m) == 1]
     ans = len(units)
     if return_units:

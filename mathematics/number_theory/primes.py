@@ -1,13 +1,10 @@
 import math
-from datetime import datetime
 from multiprocessing import Pool
 
 
 def is_prime_wilsons_theorem(num):
     """Check for primality using wilsons theorem"""
-    if num == 1 or num == 0:
-        return False
-    if num < 0:
+    if num == 1 or num == 0 or num < 0:
         return False
     num = num
     return math.factorial(num - 1) % num == num - 1
@@ -32,8 +29,18 @@ def is_prime(num):
     return math.factorial(n - 1) % n == n - 1
 
 
-def prime_gen(start, stop=None, multiprocess=True):
+def prime_gen(*args, **kwargs):
     """Generates primes from start=>stop"""
+    start = 0
+    stop = 0
+    if len(args) == 1:
+        stop = args[0]
+    else:
+        start = args[0]
+        stop = args[1]
+    multiprocess = True
+    if "multiprocess" in kwargs.items():
+        multiprocess = kwargs["multiprocess"]
     primes_to_check = list(range(start, stop))
     result = []
     if multiprocess:
@@ -50,37 +57,26 @@ def prime_gen(start, stop=None, multiprocess=True):
     return actual_numbers
 
 
-if __name__ == "__main__":
-    t1 = datetime.now()
-    print(prime_gen(0, 10000), False)
-    t2 = datetime.now()
-    t3 = datetime.now()
-    print(prime_gen(0, 10000), True)
-    t4 = datetime.now()
-    print((t2-t1).microseconds)
-    print((t4-t3).microseconds)
-
-
 def mersenne(n):
     """
-    Returns the mersenne of the number ((2**n)-1)
+    Returns the nth mersenne number
     :param n:
     :return:
     """
     return (2 ** n) - 1
 
 
-def lucas_lehmer(m):
-    """Implements Lucas Lehmer mersenne prime test."""
-    lucas_lehmer_list = [4]
-    if len(lucas_lehmer_list) < m:
-        for num in range(m - 1):
-            lucas_lehmer_list.append(lucas_lehmer_list[-1] ** 2 - 2)
-            print(lucas_lehmer_list)
-    if lucas_lehmer_list[m - 1] == 0:
-        return True
-    else:
-        return False
+def is_mersenne_number(n):
+    return math.log(n + 1, 2).is_integer()
+
+
+def lucas_lehmer(p):
+    """Implements Lucas Lehmer mersenne prime test. Checks if the pth mersenne number is prime"""
+    s = 4
+    m = mersenne(p)
+    for i in range(p - 2):
+        s = ((s * s) - 2) % m
+    return s == 0
 
 
 def lucas_lehmer_gen(start, stop):
@@ -90,17 +86,3 @@ def lucas_lehmer_gen(start, stop):
             print(lucas_lehmer((i ** 2) - 1))
             answer.append((i ** 2) - 1)
     return answer
-
-
-def prime_factor(number):
-    """Returns a list of prime factors of a number"""
-    if number == 1:
-        return [1]
-    ans = []
-    for i in range(2, number + 1):
-        if is_prime(i):
-            while number % i == 0:
-                if number % i == 0:
-                    ans.append(i)
-                    number = int(number / i)
-    return ans

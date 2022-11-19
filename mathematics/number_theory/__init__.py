@@ -1,13 +1,15 @@
 import math
 import itertools
 
+from mathematics.number_theory.primes import is_prime
 
-def factors(number):
+
+def factors(number: int) -> list[int]:
     """Returns the factors of the number"""
     return [i for i in range(1, number + 1) if not number % i]
 
 
-def step_in_euclidean_algorithm(a, b):
+def step_in_euclidean_algorithm(a, b) -> tuple:
     x, y = divmod(a, b)
     return a, b, x, y
 
@@ -33,14 +35,14 @@ def nth_power(stop, power):
     return [i**power for i in range(1, stop + 1)]
 
 
-def d(n, m):
+def d(n: int, m: int) -> bool:
     """Checks if n divides m, equivalent to n|m"""
     if (m / n) % 1 == 0:
         return True
     return False
 
 
-def partition(n):
+def partition(n: int) -> list[list[int]]:
     """Returns the partitions of n"""
     partitions = []
     ll = ""
@@ -56,12 +58,14 @@ def partition(n):
                 new_part = []
                 for item in element:
                     new_part.append(int(item))
-                if new_part.sort() not in partitions:
-                    partitions.append(new_part.sort())
-    return partitions.sort()
+                new_part.sort()
+                if new_part not in partitions:
+                    partitions.append(new_part)
+    partitions.sort()
+    return partitions
 
 
-def primitive_root(n):
+def primitive_root(n: int):
     primitive_roots = []
     for i in range(2, n):
         if math.gcd(i, n) == 1:
@@ -86,16 +90,16 @@ def primitive_root(n):
     return None
 
 
-def root_equivalents(modulus, square_of_root):
+def root_equivalents(modulus: int, square_of_root):
     return [i for i in range(0, modulus) if i ** 2 % modulus == square_of_root]
 
 
-def pigeon_hole(colors, number_needed):
+def pigeon_hole(colors: int, number_needed: int) -> int:
     return (number_needed - 1) * colors
 
 
-def primitive_roots(n):
-    primitive_roots = []
+def primitive_roots(n: int) -> list:
+    primitive_roots_l = []
     co_prime_to_n = []
     for i in range(1, n):
         if math.gcd(n, i) == 1:
@@ -105,5 +109,19 @@ def primitive_roots(n):
         for e in range(1, n):
             powers_of_i.append(i**e % n)
         if sorted(powers_of_i) == co_prime_to_n:
-            primitive_roots.append(i)
-    return primitive_roots
+            primitive_roots_l.append(i)
+    return primitive_roots_l
+
+
+def prime_factor(number: int) -> list[int]:
+    """Returns a list of prime factors of a number"""
+    if number == 1:
+        return [1]
+    ans = []
+    for i in range(2, number + 1):
+        if is_prime(i):
+            while number % i == 0:
+                if number % i == 0:
+                    ans.append(i)
+                    number = int(number / i)
+    return ans

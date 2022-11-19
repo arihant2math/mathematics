@@ -17,19 +17,13 @@ class HoldList:
         try:
             if platform.system() == "Windows":
                 self.path = (
-                        "C:/Users/"
-                        + str(os.getlogin())
-                        + "/AppData/Local/Temp/mathematics-python/"
-                        + mathematics.VERSION
-                        + "/"
+                    "C:/Users/"
+                    + str(os.getlogin())
+                    + "/.mathematics-python/"
+                    + mathematics.VERSION
+                    + "/"
                 )
-            elif platform.system() == "Darwin":
-                self.path = (
-                        "~/Library/Application Support/mathematics-python/"
-                        + mathematics.VERSION
-                        + "/"
-                )
-            elif platform.system() == "Linux":
+            elif platform.system() == "Darwin" or platform.system() == "Linux":
                 self.path = "~/.mathematics-python/" + mathematics.VERSION + "/"
             else:
                 self.path = ""
@@ -48,7 +42,7 @@ class HoldList:
         """Saves hold"""
         to_write = str(self.hold).replace(" ", "")
         f = open(self.path + self.file_name + ".list", "w")
-        f.write(to_write[1: len(to_write) - 2])
+        f.write(to_write[1 : len(to_write) - 2])
         f.close()
 
     def read(self):

@@ -7,5 +7,5 @@ When you have installed the package, just import the module you want to use by r
     from mathematics import module
 
 
-Where module is the module you want to import. Currently the modules are counting, number_theory, stats, and
+Where module is the module you want to import. The modules are algebra, counting, number_theory, stats, and
 probability.
