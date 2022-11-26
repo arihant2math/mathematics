@@ -29,18 +29,6 @@ def sieve_numbers(num):
     return square_root_sieve + sieve
 
 
-def lucas_lehmer_gen(n):
-    answer = []
-    for j in range(1, n):
-        if mathematics.number_theory.primes.is_prime(j):
-            if lucas_lehmer(j):
-                print(j, mathematics.lucas_lehmer(j))
-                n = input("Continue?")
-                answer.append(j)
-                if "continue" not in n:
-                    return answer
-
-
 # Patterns for modular arithmetic
 def pattern_mod_n_adding(n, mod):
     ans = []

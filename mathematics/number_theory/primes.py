@@ -17,7 +17,7 @@ def is_prime_fermat_little_theorem(num):
     return all(i ** (num - 1) % num == 1 for i in range(2, num))
 
 
-def is_prime(num):
+def is_prime(num: int) -> bool:
     """Checks if the number is prime using fermats little theorem if the number is greater that 1000"""
     if num == 1 or num == 0:
         return False

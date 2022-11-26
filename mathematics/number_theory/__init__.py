@@ -28,10 +28,10 @@ def euclidean_algorithm(a, b, pretty_print=False):
 
 def extended_euclidean_algorithm():
     # should have param number
-    return NotImplemented
+    raise NotImplementedError("To be implemented release TBD")
 
 
-def nth_power(stop, power):
+def nth_power(stop, power) -> list[int]:
     return [i**power for i in range(1, stop + 1)]
 
 
@@ -86,11 +86,11 @@ def primitive_root(n: int):
                         if not (pow(w, x) * pow(y, z)) % n in number:
                             number.append((pow(w, x) * pow(y, z)) % n)
             if len(number) == n / 2 - ((n / 2) % 1):
-                return str(w) + ", " + str(y)
+                return w, y
     return None
 
 
-def root_equivalents(modulus: int, square_of_root):
+def root_equivalents(modulus: int, square_of_root: int) -> list[int]:
     return [i for i in range(0, modulus) if i ** 2 % modulus == square_of_root]
 
 

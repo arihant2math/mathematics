@@ -1,7 +1,6 @@
 class Term:
-    def __init__(self, variables: list, coefficient: float):
+    def __init__(self, variables: set, coefficient: float):
         self.variables = variables
-        self.variables.sort()
         self.coefficient = coefficient
         self._simplify()
 

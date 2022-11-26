@@ -1,15 +1,15 @@
 import platform
 from os import getlogin
-
 import setuptools
 
 MAJOR_VERSION = 0
 MINOR_VERSION = 0
 PATCH = 0
 VERSION = (
-    str(MAJOR_VERSION) + "." + str(MINOR_VERSION) + "." + str(PATCH) + "a0.dev202211181"
+        str(MAJOR_VERSION) + "." + str(MINOR_VERSION) + "." + str(PATCH) + "a0.dev202211181"
 )
 FILE_VERSION = ""
+
 primes = [
     2,
     3,
@@ -35,7 +35,7 @@ primes = [
     79,
     83,
     89,
-    97,
+    97
 ]
 
 if platform.system() == "Windows":
@@ -50,7 +50,7 @@ else:
 # 	with open(path + "primes.list", "x") as primes_file:
 # 		primes_file.write(str(primes))
 
-with open("README.md", "r", encoding="utf-8") as readme:
+with open("package.md", "r", encoding="utf-8") as readme:
     long_description = readme.read()
 
 setuptools.setup(
