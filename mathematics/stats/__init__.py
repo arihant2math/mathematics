@@ -1,9 +1,8 @@
 from statistics import mean, mode, variance, stdev, quantiles
-import numpy as np
 from matplotlib import pyplot as plt
 
 
-def data(data_list: list) -> dict:
+def quick_stat(data_list: list) -> dict:
     quantiles_l = quantiles(data_list)
     return {
         "mean": mean(data_list),

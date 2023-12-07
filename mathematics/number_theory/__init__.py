@@ -4,6 +4,15 @@ import itertools
 from mathematics.number_theory.primes import is_prime
 
 
+def totient(m: int) -> int:
+    """The euler totient function returns the number of positive integers less than or equal to m that are relatively
+    prime to m.
+    :return: The number of positive integers less than or equal to m that are relatively prime to m.
+    """
+    units = [i for i in range(1, m + 1) if math.gcd(i, m) == 1]
+    return len(units)
+
+
 def factors(number: int) -> list[int]:
     """Returns the factors of the number"""
     return [i for i in range(1, number + 1) if not number % i]
@@ -14,16 +23,11 @@ def step_in_euclidean_algorithm(a, b) -> tuple:
     return a, b, x, y
 
 
-def euclidean_algorithm(a, b, pretty_print=False):
+def euclidean_algorithm(a, b):
     li = step_in_euclidean_algorithm(a, b)
     while li[3] != 0:
         li = step_in_euclidean_algorithm(li[1], li[3])
-    if pretty_print:
-        return (
-            str(li[0]) + " = " + str(li[1]) + "(" + str(li[2]) + ")" + "+" + str(li[3])
-        )
-    else:
-        return li
+    return li
 
 
 def extended_euclidean_algorithm():
@@ -31,15 +35,14 @@ def extended_euclidean_algorithm():
     raise NotImplementedError("To be implemented release TBD")
 
 
-def nth_power(stop, power) -> list[int]:
-    return [i**power for i in range(1, stop + 1)]
+def nth_power(repetitions, power) -> list[int]:
+    """returns a list with every i from 1 to repetitions with every element raised to the power"""
+    return [i ** power for i in range(1, repetitions + 1)]
 
 
 def d(n: int, m: int) -> bool:
     """Checks if n divides m, equivalent to n|m"""
-    if (m / n) % 1 == 0:
-        return True
-    return False
+    return (m / n) % 1 == 0
 
 
 def partition(n: int) -> list[list[int]]:
@@ -66,7 +69,7 @@ def partition(n: int) -> list[list[int]]:
 
 
 def primitive_root(n: int):
-    primitive_roots = []
+    _primitive_roots = []
     for i in range(2, n):
         if math.gcd(i, n) == 1:
             number = []
@@ -77,7 +80,7 @@ def primitive_root(n: int):
                 power = pow(2, 2) % n
                 if len(number) == n:
                     return i, number
-    if len(primitive_roots) == 0:
+    if len(_primitive_roots) == 0:
         for w, y in itertools.product(range(2, n), repeat=2):
             number = []
             for x in range(1, n):

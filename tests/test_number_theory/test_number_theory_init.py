@@ -1,6 +1,15 @@
 from mathematics.number_theory import *
 
 
+def test_totient():
+    assert totient(10) == 4
+    assert totient(43) == 42
+    assert totient(186) == 60
+    assert totient(1) == 1
+    assert totient(5) == 4
+    assert totient(9) == 6
+
+
 def test_prime_factor():
     assert prime_factor(1) == [1]
     assert prime_factor(11) == [11]

@@ -4,7 +4,7 @@ test:
 	python3 -m pytest .
 
 build:
-	python3 setup.py sdist
+	python3 setup.py build
 
 clean:
 	rm -rf "mathematics.egg-info"

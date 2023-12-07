@@ -1,7 +1,6 @@
 """Holds a list, so it can be accessed when python quits"""
 import os
-import platform
-import mathematics
+from pathlib import Path
 
 
 class HoldList:
@@ -13,36 +12,24 @@ class HoldList:
         """
         :param name: The name of the file, starts in the default directory
         """
-        self.file_name = name
-        try:
-            if platform.system() == "Windows":
-                self.path = (
-                    "C:/Users/"
-                    + str(os.getlogin())
-                    + "/.mathematics-python/"
-                    + mathematics.VERSION
-                    + "/"
-                )
-            elif platform.system() == "Darwin" or platform.system() == "Linux":
-                self.path = "~/.mathematics-python/" + mathematics.VERSION + "/"
-            else:
-                self.path = ""
-            self.read()
-        except FileNotFoundError:
-            self.hold = ""
+        self.path = Path(Path.home()) / ".mathematics"
+        self.file_name = self.path / (name + ".list")
+        self.hold = []
+        if self.path.exists():
+            self._read()
+        else:
+            os.mkdir(self.path)
             self.save()
 
     def delete(self):
-        """Deletes the object, should be used with del"""
-        import os
-
-        os.remove(self.path + self.file_name + ".list")
+        """Deletes the file"""
+        os.remove(self.file_name)
 
     def save(self):
         """Saves hold"""
         to_write = str(self.hold).replace(" ", "")
-        f = open(self.path + self.file_name + ".list", "w")
-        f.write(to_write[1 : len(to_write) - 2])
+        f = open(self.file_name, "w")
+        f.write(to_write[1 : len(to_write) - 1])
         f.close()
 
     def read(self):
@@ -53,10 +40,15 @@ class HoldList:
         self._read()
         return self.hold
 
-    def modify(self, new):
+    def write(self, new):
         self.hold = new
+        self.save()
+
+    def append(self, item):
+        self.hold.append(item)
+        self.save()
 
     def _read(self):
-        f = open(self.path + self.file_name + ".list", "r")
+        f = open(self.file_name, "r")
         self.hold = f.read().split(",")
         f.close()

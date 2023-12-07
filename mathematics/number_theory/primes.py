@@ -11,22 +11,28 @@ def is_prime_wilsons_theorem(num):
 
 
 def is_prime_fermat_little_theorem(num):
-    """Check for primality using fermats little theorem, faster than wilsons theorem for larger numbers"""
+    """Check for primality using fermats little theorem, faster than wilsons theorem for larger numbers,
+    but is incorrect for any Carmicheal number"""
     if num == 1 or num == 0:
         return False
     return all(i ** (num - 1) % num == 1 for i in range(2, num))
 
 
+def is_prime_six_k_pm_one(n: int) -> bool:
+    if n <= 3:
+        return n > 1
+    if n % 2 == 0 or n % 3 == 0:
+        return False
+    limit = int(n**0.5)
+    for i in range(5, limit + 1, 6):
+        if n % i == 0 or n % (i + 2) == 0:
+            return False
+    return True
+
+
 def is_prime(num: int) -> bool:
-    """Checks if the number is prime using fermats little theorem if the number is greater that 1000"""
-    if num == 1 or num == 0:
-        return False
-    if num < 0:
-        return False
-    if num > 1000:
-        return all(i ** (num - 1) % num == 1 for i in range(2, num))
-    n = abs(num)
-    return math.factorial(n - 1) % n == n - 1
+    """Uses 6k+-1"""
+    return is_prime_six_k_pm_one(num)
 
 
 def prime_gen(*args, **kwargs):
@@ -38,7 +44,7 @@ def prime_gen(*args, **kwargs):
     else:
         start = args[0]
         stop = args[1]
-    multiprocess = True
+    multiprocess = False
     if "multiprocess" in kwargs.items():
         multiprocess = kwargs["multiprocess"]
     primes_to_check = list(range(start, stop))
@@ -63,7 +69,7 @@ def mersenne(n):
     :param n:
     :return:
     """
-    return (2 ** n) - 1
+    return (2**n) - 1
 
 
 def is_mersenne_number(n):
@@ -81,8 +87,8 @@ def lucas_lehmer(p):
 
 def lucas_lehmer_gen(start, stop):
     answer = []
-    for i in range(start, stop + 1):
+    for i in range(start, stop):
         if lucas_lehmer(i):
-            print(lucas_lehmer((i ** 2) - 1))
-            answer.append((i ** 2) - 1)
+            print(lucas_lehmer((i**2) - 1))
+            answer.append((i**2) - 1)
     return answer

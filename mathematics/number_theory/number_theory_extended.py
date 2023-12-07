@@ -1,7 +1,6 @@
 import itertools
 import statistics
 
-import mathematics.counting
 import mathematics.number_theory.primes
 from mathematics import number_theory
 import math
@@ -18,7 +17,7 @@ def partial_sum_for_half_plus_fourth(n):
 def sieve_numbers(num):
     square_root_sieve = []
     sieve = range(2, num + 1)
-    for i in range(1, math.floor(math.sqrt(num)) + 1):
+    for i in range(2, math.ceil(math.sqrt(num)) + 1):
         if i in sieve:
             square_root_sieve.append(i)
             new_sieve = []
@@ -75,7 +74,6 @@ def pattern_mod_n_adding_gen(end, start_1, start_2):
     return lengths
 
 
-# noinspection PyGlobalUndefined,PyGlobalUndefined,PyGlobalUndefined
 def pattern_mod_n_analytics_v1(
     end_1, start_1_1, start_2_1, end_2, start_1_2, start_2_2, the_function
 ):
@@ -163,13 +161,6 @@ def powers_of_x_plus_1_mod_prime(prime, x, p):
 def powers_of_x_plus_1_mod_prime_gen(x, prime, stop_p):
     for p in range(1, stop_p + 1):
         return powers_of_x_plus_1_mod_prime(prime, x, p)
-
-
-def totient_function_for_1_number(mod):
-    for i in range(1, 1000000000):
-        if mathematics.counting.totient_function(i) == mod:
-            print(i)
-
 
 def squares_mod_m(stop, m):
     beginning = number_theory.nth_power(stop, 2)

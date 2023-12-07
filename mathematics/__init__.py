@@ -15,17 +15,14 @@ def product(list_of_numbers: list):
     return current_product
 
 
-def sigma_function(func, start: int, stop: int):
-    """The sigma function returns the sum of the values of the function func from start to stop."""
-    return sum(func(i) for i in range(start, stop + 1))
+def sigma_function(func, iterable):
+    """The sigma function returns the sum of the values of the function func from looping through the iterable."""
+    return sum([func(i) for i in iterable])
 
 
-def pi_function(func, start: int, stop: int):
-    """The pi function returns the product of the values of the function func from start to stop."""
-    ans = 1
-    for i in range(start, stop + 1):
-        ans *= func(i)
-    return ans
+def pi_function(func, iterable):
+    """The pi function returns the product of the values of the function func from looping through the iterable."""
+    return product([func(i) for i in iterable])
 
 
 PI: float = float(
@@ -41,6 +38,6 @@ PI: float = float(
         "\n", ""
     )
 )
-TAU: float = PI*2
+TAU: float = PI * 2
 INF: float = inf
 NaN: float = nan

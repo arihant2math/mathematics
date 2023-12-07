@@ -6,7 +6,7 @@ MAJOR_VERSION = 0
 MINOR_VERSION = 0
 PATCH = 0
 VERSION = (
-        str(MAJOR_VERSION) + "." + str(MINOR_VERSION) + "." + str(PATCH) + "a0.dev202211181"
+    str(MAJOR_VERSION) + "." + str(MINOR_VERSION) + "." + str(PATCH) + "a0.dev202211291"
 )
 FILE_VERSION = ""
 
@@ -35,23 +35,11 @@ primes = [
     79,
     83,
     89,
-    97
+    97,
 ]
 
-if platform.system() == "Windows":
-    path = "C:/Users/" + str(getlogin()) + ".mathematics/"
-elif platform.system() == "Darwin":
-    path = "~/Library/Application Support/mathematics-python/"
-elif platform.system() == "Linux":
-    path = "~/.mathematics-python/"
-else:
-    path = ""
-# if not exists(path + "primes.list"):
-# 	with open(path + "primes.list", "x") as primes_file:
-# 		primes_file.write(str(primes))
-
-with open("package.md", "r", encoding="utf-8") as readme:
-    long_description = readme.read()
+with open("README.md", "r", encoding="utf-8") as package_info:
+    long_description = package_info.read()
 
 setuptools.setup(
     name="mathematics",
@@ -72,5 +60,5 @@ setuptools.setup(
         "Intended Audience :: Developers",
     ],
     python_requires=">=3.7",
-    requires=["numpy", "matplotlib"],
+    requires=["numpy", "matplotlib", "sympy"],
 )
